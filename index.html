@@ -17,7 +17,7 @@
             height: 100%; margin: 0; padding: 0;
             font-family: 'Prompt', sans-serif;
             background-color: var(--bg);
-            overflow: hidden; /* ป้องกันการเลื่อนหน้าจอหลัก */
+            overflow: hidden; 
         }
 
         .app-wrapper {
@@ -26,131 +26,123 @@
             height: 100vh;
         }
 
-        /* --- Header ปรับปรุงใหม่ --- */
+        /* --- Header ปรับให้ยืดหยุ่นมากยิ่งขึ้น --- */
         .app-header {
             background: #ffffff;
-            padding: clamp(15px, 3vh, 35px) 20px;
+            padding: clamp(8px, 2vh, 25px) 15px;
             text-align: center;
-            border-bottom: 5px solid var(--primary);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-bottom: 4px solid var(--primary);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
             flex-shrink: 0;
-            z-index: 100;
         }
 
         .school-logo {
-            height: clamp(45px, 8vh, 85px);
+            height: clamp(35px, 6vh, 75px);
             width: auto;
-            margin-bottom: 10px;
-            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.1));
+            margin-bottom: 5px;
         }
 
         .app-title {
-            font-size: clamp(1.4rem, 4vw, 2.5rem);
+            font-size: clamp(1.1rem, 3.5vw, 2.2rem);
             font-weight: 700;
             color: var(--primary);
             margin: 0;
-            line-height: 1.2;
         }
 
         .app-subtitle {
-            font-size: clamp(0.85rem, 2vw, 1.2rem);
+            font-size: clamp(0.7rem, 1.8vw, 1.1rem);
             color: #475569;
-            margin-top: 8px;
-            font-weight: 400;
+            margin-top: 2px;
         }
 
-        /* --- พื้นที่เมนูหลัก --- */
+        /* --- พื้นที่เมนูหลัก: แก้ไขให้พอดีหน้าจอไม่โดนบัง --- */
         #mainMenu {
             flex-grow: 1;
-            padding: 15px;
+            padding: 8px 15px;
             display: grid;
-            gap: 1.2vh; /* ระยะห่างยืดหยุ่นตามความสูงหน้าจอ */
+            gap: 1vh; /* ระยะห่างปรับตามความสูงหน้าจอ */
             grid-template-columns: 1fr;
-            align-content: stretch;
-            margin-bottom: 75px; /* เว้นที่ให้ Nav ล่าง */
+            align-content: stretch; /* ให้เมนูขยายตัวในพื้นที่ที่เหลือ */
+            overflow: hidden; /* ล็อคไม่ให้เลื่อน */
+            /* คำนวณเผื่อ Nav ล่าง */
+            margin-bottom: 70px; 
             max-width: 1200px;
             margin-left: auto;
             margin-right: auto;
             width: 100%;
         }
 
-        /* ปรับหน้าจอคอมพิวเตอร์ให้กว้างขึ้น */
         @media (min-width: 1024px) {
             #mainMenu {
                 grid-template-columns: repeat(2, 1fr);
                 grid-template-rows: repeat(4, 1fr);
-                gap: 20px;
+                gap: 15px;
                 padding: 30px 60px;
+                margin-bottom: 80px;
             }
         }
 
         .menu-item {
             background: white;
-            border-radius: 15px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
-            padding: 0 20px;
+            padding: 0 15px;
             text-decoration: none !important;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.04);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
             border: 1px solid rgba(0,0,0,0.05);
             transition: all 0.2s ease;
             cursor: pointer;
-            min-height: 0;
+            /* ช่วยให้ปุ่มไม่สูงเกินไปในมือถือจอเล็ก */
+            min-height: 0; 
         }
 
-        .menu-item:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
-            background: #fff;
-        }
-
-        .menu-item:active { transform: scale(0.97); }
+        .menu-item:active { transform: scale(0.97); background: #f8fafc; }
 
         .icon-box {
-            width: clamp(40px, 6.5vh, 60px);
-            height: clamp(40px, 6.5vh, 60px);
-            border-radius: 12px;
+            /* ไอคอนจะเล็กลงอัตโนมัติถ้าหน้าจอเตี้ย */
+            width: clamp(32px, 5.5vh, 55px);
+            height: clamp(32px, 5.5vh, 55px);
+            border-radius: 10px;
             display: flex; align-items: center; justify-content: center;
-            font-size: clamp(1.2rem, 3vh, 1.8rem);
-            color: white; margin-right: 20px;
+            font-size: clamp(1rem, 2.5vh, 1.6rem);
+            color: white; margin-right: 12px;
             flex-shrink: 0;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
 
-        /* สี Gradient 8 สีแยกชัดเจน */
-        .c1 { background: linear-gradient(135deg, #e74c3c, #c0392b); } /* แดง */
-        .c2 { background: linear-gradient(135deg, #1abc9c, #16a085); } /* เขียวมรกต */
-        .c3 { background: linear-gradient(135deg, #3498db, #2980b9); } /* ฟ้า */
-        .c4 { background: linear-gradient(135deg, #9b59b6, #8e44ad); } /* ม่วง */
-        .c5 { background: linear-gradient(135deg, #f39c12, #e67e22); } /* ส้ม */
-        .c6 { background: linear-gradient(135deg, #34495e, #2c3e50); } /* น้ำเงินเข้ม */
-        .c7 { background: linear-gradient(135deg, #27ae60, #219150); } /* เขียวเข้ม */
-        .c8 { background: linear-gradient(135deg, #d35400, #a04000); } /* ส้มอิฐ */
+        /* สีประจำเมนู */
+        .c1 { background: linear-gradient(135deg, #e74c3c, #c0392b); }
+        .c2 { background: linear-gradient(135deg, #1abc9c, #16a085); }
+        .c3 { background: linear-gradient(135deg, #3498db, #2980b9); }
+        .c4 { background: linear-gradient(135deg, #9b59b6, #8e44ad); }
+        .c5 { background: linear-gradient(135deg, #f39c12, #e67e22); }
+        .c6 { background: linear-gradient(135deg, #34495e, #2c3e50); }
+        .c7 { background: linear-gradient(135deg, #27ae60, #219150); }
+        .c8 { background: linear-gradient(135deg, #d35400, #a04000); }
 
         .menu-label { 
-            font-size: clamp(0.9rem, 2.2vh, 1.2rem);
+            font-size: clamp(0.8rem, 2vh, 1.15rem);
             font-weight: 600; 
             color: #1e293b;
-            white-space: nowrap; /* ห้ามตัดบรรทัด */
+            white-space: nowrap; 
         }
 
         /* ระบบ Iframe */
-        #systemContent { display: none; width: 100%; height: calc(100vh - 75px); border: none; background: white; }
+        #systemContent { display: none; width: 100%; height: calc(100vh - 70px); border: none; background: white; }
 
-        /* Nav ล่าง */
+        /* Nav ล่าง: ปรับให้คงที่และไม่เบียดพื้นที่ข้างบน */
         .bottom-nav {
             position: fixed; bottom: 0; left: 0; right: 0;
-            height: 75px; background: white;
+            height: 70px; background: white;
             display: flex; justify-content: space-around; align-items: center;
             border-top: 1px solid #e2e8f0; z-index: 2000;
-            box-shadow: 0 -4px 10px rgba(0,0,0,0.05);
         }
         .nav-btn {
             display: flex; flex-direction: column; align-items: center;
-            color: #94a3b8; border: none; background: none; flex: 1; font-size: 0.85rem;
+            color: #94a3b8; border: none; background: none; flex: 1; font-size: 0.75rem;
         }
         .nav-btn.active { color: var(--primary); font-weight: 600; }
-        .nav-btn i { font-size: 1.6rem; margin-bottom: 4px; }
+        .nav-btn i { font-size: 1.4rem; margin-bottom: 2px; }
     </style>
 </head>
 <body>
@@ -159,7 +151,7 @@
     <header id="headerArea" class="app-header">
         <img src="https://raw.githubusercontent.com/joodami/school-assets/main/logo.png" alt="Logo" class="school-logo">
         <h1 class="app-title">PS-Sarabun</h1>
-        <p class="app-subtitle">ระบบสารบรรณอิเล็กทรอนิกส์ โรงเรียนพิมานพิทยาสรรค์</p>
+        <p class="app-subtitle">งานสารบรรณ โรงเรียนพิมานพิทยาสรรค์</p>
     </header>
 
     <main id="mainMenu">
@@ -167,37 +159,30 @@
             <div class="icon-box c1"><i class="fas fa-envelope-open-text"></i></div>
             <span class="menu-label">ขอเลขหนังสือออก</span>
         </div>
-
         <div class="menu-item" onclick="openSystem('https://joodami.github.io/BookNumber0269/')">
             <div class="icon-box c2"><i class="fas fa-gavel"></i></div>
             <span class="menu-label">ขอเลขคำสั่งโรงเรียน</span>
         </div>
-
         <div class="menu-item" onclick="openSystem('https://joodami.github.io/BookNumber0369/')">
             <div class="icon-box c3"><i class="fas fa-sticky-note"></i></div>
             <span class="menu-label">ขอเลขบันทึกข้อความ</span>
         </div>
-
         <div class="menu-item" onclick="openSystem('https://joodami.github.io/BookCertificat69/')">
             <div class="icon-box c4"><i class="fas fa-certificate"></i></div>
             <span class="menu-label">ออกเลขเกียรติบัตร</span>
         </div>
-
         <div class="menu-item" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSewguRcJ9noZvMPJX1QdavSGV8Ib95WUeWVcIInTd0sPGieIA/viewform', '_blank')">
             <div class="icon-box c5"><i class="fas fa-file-signature"></i></div>
             <span class="menu-label">เสนอเซ็นหนังสือราชการ</span>
         </div>
-
         <div class="menu-item" onclick="openSystem('https://joodami.github.io/track-status69/')">
             <div class="icon-box c6"><i class="fas fa-tasks"></i></div>
             <span class="menu-label">ติดตามสถานะหนังสือเสนอเซ็น</span>
         </div>
-
         <div class="menu-item" onclick="openSystem('https://joodami.github.io/Reserve-a-car69/')">
             <div class="icon-box c7"><i class="fas fa-car"></i></div>
             <span class="menu-label">จองคิวรถยนต์ส่วนราชการ</span>
         </div>
-
         <div class="menu-item" onclick="openSystem('https://joodami.github.io/SearchOrder69/')">
             <div class="icon-box c8"><i class="fas fa-search"></i></div>
             <span class="menu-label">สืบค้นคำสั่งโรงเรียน</span>
@@ -238,7 +223,7 @@
         systemContent.src = "";
         systemContent.style.display = 'none';
         headerArea.style.display = 'block';
-        mainMenu.style.display = window.innerWidth >= 1024 ? 'grid' : 'grid';
+        mainMenu.style.display = 'grid';
     }
 </script>
 
