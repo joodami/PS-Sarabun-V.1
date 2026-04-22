@@ -18,7 +18,7 @@
             height: 100%; margin: 0; padding: 0;
             font-family: 'Sarabun', sans-serif;
             background-color: var(--bg);
-            overflow: hidden; /* ล็อกหน้าจอรวมให้เหมือน App */
+            overflow: hidden; 
         }
 
         /* Header */
@@ -33,10 +33,11 @@
 
         /* Dashboard Grid */
         #mainMenu {
-            height: calc(100vh - 165px); /* หัก Header และ Nav */
-            overflow-y: auto; padding: 20px 15px;
+            height: calc(100vh - 125px); /* ปรับความสูงหักลบส่วนหัวและท้าย */
+            overflow-y: auto; 
+            padding: 20px 15px 120px 15px; /* เพิ่มระยะด้านล่าง 120px เพื่อดันเนื้อหาขึ้นจากแถบล่าง */
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* แบ่ง 2 คอลัมน์ */
+            grid-template-columns: repeat(2, 1fr);
             gap: 15px;
             align-content: start;
         }
@@ -56,7 +57,6 @@
             font-size: 1.5rem; color: white; margin-bottom: 10px;
         }
         
-        /* สีไอคอนแยกตามหมวดหมู่ */
         .bg-blue { background: linear-gradient(135deg, #3498db, #2980b9); }
         .bg-green { background: linear-gradient(135deg, #2ecc71, #27ae60); }
         .bg-orange { background: linear-gradient(135deg, #e67e22, #d35400); }
@@ -68,7 +68,8 @@
 
         /* ระบบ Iframe */
         #systemContent {
-            display: none; width: 100%; height: calc(100vh - 70px);
+            display: none; width: 100%; 
+            height: calc(100vh - 70px); /* หักออก 70px เพื่อไม่ให้เมนูด้านล่างทับเนื้อหาภายใน */
             border: none; background: white;
         }
 
@@ -77,8 +78,8 @@
             position: fixed; bottom: 0; left: 0; right: 0;
             height: 70px; background: white;
             display: flex; justify-content: space-around; align-items: center;
-            border-top: 1px solid #eee; box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
-            z-index: 1000;
+            border-top: 1px solid #eee; box-shadow: 0 -5px 15px rgba(0,0,0,0.08);
+            z-index: 2000;
         }
         .nav-btn {
             display: flex; flex-direction: column; align-items: center;
@@ -88,7 +89,6 @@
         .nav-btn i { font-size: 1.4rem; margin-bottom: 2px; }
         .nav-btn.active { color: var(--primary); }
 
-        /* ปรับแต่งสำหรับมือถือจอเล็ก */
         @media (max-width: 350px) {
             .menu-label { font-size: 0.7rem; }
             .icon-wrapper { width: 45px; height: 45px; font-size: 1.2rem; }
@@ -109,9 +109,9 @@
         <div class="menu-label">จองคิวรถ</div>
     </div>
 
-    <div class="menu-item" onclick="openSystem('https://docs.google.com/forms/d/e/1FAIpQLSewguRcJ9noZvMPJX1QdavSGV8Ib95WUeWVcIInTd0sPGieIA/viewform')">
+    <div class="menu-item" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSewguRcJ9noZvMPJX1QdavSGV8Ib95WUeWVcIInTd0sPGieIA/viewform', '_blank')">
         <div class="icon-wrapper bg-green"><i class="fas fa-file-signature"></i></div>
-        <div class="menu-label">เสนอเซ็นหนังสือ</div>
+        <div class="menu-label">เสนอเซ็นหนังสือ<br><small style="font-weight:normal; font-size:0.6rem">(เปิดหน้าต่างใหม่)</small></div>
     </div>
 
     <div class="menu-item" onclick="openSystem('https://joodami.github.io/track-status69/')">
@@ -166,21 +166,14 @@
     const mainMenu = document.getElementById('mainMenu');
     const headerArea = document.getElementById('headerArea');
     const systemContent = document.getElementById('systemContent');
-    const btnHome = document.getElementById('btnHome');
 
-    // ฟังก์ชันเปิดระบบ
     function openSystem(url) {
-        if(url.includes('URL_')) {
-            alert('กรุณาใส่ลิงก์จริงในโค้ดก่อนนะค่ะ');
-            return;
-        }
         headerArea.style.display = 'none';
         mainMenu.style.display = 'none';
         systemContent.style.display = 'block';
         systemContent.src = url;
     }
 
-    // ฟังก์ชันกลับหน้าหลัก
     function goHome() {
         systemContent.src = "";
         systemContent.style.display = 'none';
