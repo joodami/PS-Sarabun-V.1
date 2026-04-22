@@ -26,45 +26,63 @@
             height: 100vh;
         }
 
-        /* --- Header ปรับให้ยืดหยุ่นมากยิ่งขึ้น --- */
+        /* --- Header ปรับปรุงใหม่เพื่อความชัดเจนในมือถือ --- */
         .app-header {
             background: #ffffff;
-            padding: clamp(8px, 2vh, 25px) 15px;
+            padding: 15px 10px; /* เพิ่มพื้นที่แนวตั้งในมือถือ */
             text-align: center;
-            border-bottom: 4px solid var(--primary);
+            border-bottom: 5px solid var(--primary);
             box-shadow: 0 4px 10px rgba(0,0,0,0.08);
             flex-shrink: 0;
         }
 
         .school-logo {
-            height: clamp(35px, 6vh, 75px);
+            height: 55px; /* ล็อคขนาดโลโก้ในมือถือให้ชัดเจน */
             width: auto;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
         }
 
         .app-title {
-            font-size: clamp(1.1rem, 3.5vw, 2.2rem);
+            font-size: 1.6rem; /* เพิ่มขนาดหัวข้อหลักในมือถือ */
             font-weight: 700;
             color: var(--primary);
             margin: 0;
+            line-height: 1.1;
         }
 
         .app-subtitle {
-            font-size: clamp(0.7rem, 1.8vw, 1.1rem);
-            color: #475569;
-            margin-top: 2px;
+            font-size: 0.9rem; /* เพิ่มขนาดคำอธิบายในมือถือ */
+            color: #334155; /* ปรับสีให้เข้มขึ้นเพื่อให้อ่านง่าย */
+            margin-top: 5px;
+            font-weight: 600;
         }
 
-        /* --- พื้นที่เมนูหลัก: แก้ไขให้พอดีหน้าจอไม่โดนบัง --- */
+        /* สำหรับหน้าจอคอมพิวเตอร์ (ไม่เปลี่ยนแปลงตามที่คุณครูพอใจแล้ว) */
+        @media (min-width: 1024px) {
+            .app-header {
+                padding: 30px 20px;
+            }
+            .school-logo {
+                height: 85px;
+            }
+            .app-title {
+                font-size: 2.5rem;
+            }
+            .app-subtitle {
+                font-size: 1.2rem;
+                margin-top: 8px;
+            }
+        }
+
+        /* --- พื้นที่เมนูหลัก --- */
         #mainMenu {
             flex-grow: 1;
             padding: 8px 15px;
             display: grid;
-            gap: 1vh; /* ระยะห่างปรับตามความสูงหน้าจอ */
+            gap: 1vh;
             grid-template-columns: 1fr;
-            align-content: stretch; /* ให้เมนูขยายตัวในพื้นที่ที่เหลือ */
-            overflow: hidden; /* ล็อคไม่ให้เลื่อน */
-            /* คำนวณเผื่อ Nav ล่าง */
+            align-content: stretch;
+            overflow: hidden;
             margin-bottom: 70px; 
             max-width: 1200px;
             margin-left: auto;
@@ -76,7 +94,7 @@
             #mainMenu {
                 grid-template-columns: repeat(2, 1fr);
                 grid-template-rows: repeat(4, 1fr);
-                gap: 15px;
+                gap: 20px;
                 padding: 30px 60px;
                 margin-bottom: 80px;
             }
@@ -93,14 +111,12 @@
             border: 1px solid rgba(0,0,0,0.05);
             transition: all 0.2s ease;
             cursor: pointer;
-            /* ช่วยให้ปุ่มไม่สูงเกินไปในมือถือจอเล็ก */
             min-height: 0; 
         }
 
         .menu-item:active { transform: scale(0.97); background: #f8fafc; }
 
         .icon-box {
-            /* ไอคอนจะเล็กลงอัตโนมัติถ้าหน้าจอเตี้ย */
             width: clamp(32px, 5.5vh, 55px);
             height: clamp(32px, 5.5vh, 55px);
             border-radius: 10px;
@@ -110,7 +126,6 @@
             flex-shrink: 0;
         }
 
-        /* สีประจำเมนู */
         .c1 { background: linear-gradient(135deg, #e74c3c, #c0392b); }
         .c2 { background: linear-gradient(135deg, #1abc9c, #16a085); }
         .c3 { background: linear-gradient(135deg, #3498db, #2980b9); }
@@ -121,16 +136,14 @@
         .c8 { background: linear-gradient(135deg, #d35400, #a04000); }
 
         .menu-label { 
-            font-size: clamp(0.8rem, 2vh, 1.15rem);
+            font-size: clamp(0.85rem, 2vh, 1.15rem);
             font-weight: 600; 
             color: #1e293b;
             white-space: nowrap; 
         }
 
-        /* ระบบ Iframe */
         #systemContent { display: none; width: 100%; height: calc(100vh - 70px); border: none; background: white; }
 
-        /* Nav ล่าง: ปรับให้คงที่และไม่เบียดพื้นที่ข้างบน */
         .bottom-nav {
             position: fixed; bottom: 0; left: 0; right: 0;
             height: 70px; background: white;
