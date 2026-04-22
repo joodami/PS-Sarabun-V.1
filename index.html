@@ -18,98 +18,92 @@
             height: 100%; margin: 0; padding: 0;
             font-family: 'Sarabun', sans-serif;
             background-color: var(--bg);
-            overflow: hidden; /* ห้ามสกอร์ทั้งหน้าจอ */
+            overflow: hidden; 
         }
 
-        /* Container หลักที่คลุมทุกอย่าง */
         .app-wrapper {
             display: flex;
             flex-direction: column;
             height: 100vh;
         }
 
-        /* Header - ปรับให้กะทัดรัดขึ้น */
         .app-header {
             background: white; padding: 10px; text-align: center;
             border-bottom: 2px solid var(--primary);
             flex-shrink: 0;
         }
-        .school-logo { height: 40px; margin-bottom: 5px; }
-        .app-title { font-size: 1rem; font-weight: 600; color: var(--primary); margin: 0; }
-        .app-subtitle { font-size: 0.65rem; color: #64748b; }
+        .school-logo { height: 42px; margin-bottom: 5px; }
+        .app-title { font-size: 1.1rem; font-weight: 600; color: var(--primary); margin: 0; }
+        .app-subtitle { font-size: 0.7rem; color: #64748b; }
 
-        /* Dashboard Grid - ปรับให้ยืดหยุ่นตามพื้นที่ที่เหลือ */
         #mainMenu {
-            flex-grow: 1; /* กินพื้นที่ที่เหลือทั้งหมด */
+            flex-grow: 1;
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            grid-template-rows: repeat(4, 1fr); /* บังคับให้มี 4 แถวเท่าๆ กัน */
+            grid-template-rows: repeat(4, 1fr);
             gap: 10px;
-            padding: 10px 15px;
-            margin-bottom: 70px; /* เว้นที่ให้ Nav ด้านล่าง */
+            padding: 12px 15px;
+            margin-bottom: 75px;
         }
 
         .menu-item {
             background: white; border-radius: 15px;
-            text-align: center; text-decoration: none !important;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-            border: 1px solid #eee;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
             display: flex;
-            flex-direction: row; /* เปลี่ยนเป็นแนวนอนเพื่อให้ประหยัดที่แนวตั้ง */
+            flex-direction: row;
             align-items: center;
-            justify-content: flex-start;
-            padding: 0 15px;
+            padding: 0 12px;
             cursor: pointer;
+            transition: all 0.2s;
         }
+        .menu-item:active { transform: scale(0.96); background: #f1f5f9; }
 
         .icon-wrapper {
-            width: 35px; height: 35px; border-radius: 10px;
+            width: 38px; height: 38px; border-radius: 12px;
             display: flex; align-items: center; justify-content: center;
-            font-size: 1.1rem; color: white; margin-right: 12px;
+            font-size: 1.1rem; color: white; margin-right: 10px;
             flex-shrink: 0;
         }
         
-        .bg-blue { background: linear-gradient(135deg, #3498db, #2980b9); }
-        .bg-green { background: linear-gradient(135deg, #2ecc71, #27ae60); }
-        .bg-orange { background: linear-gradient(135deg, #e67e22, #d35400); }
-        .bg-purple { background: linear-gradient(135deg, #9b59b6, #8e44ad); }
         .bg-red { background: linear-gradient(135deg, #e74c3c, #c0392b); }
         .bg-teal { background: linear-gradient(135deg, #1abc9c, #16a085); }
+        .bg-blue { background: linear-gradient(135deg, #3498db, #2980b9); }
+        .bg-purple { background: linear-gradient(135deg, #9b59b6, #8e44ad); }
+        .bg-green { background: linear-gradient(135deg, #2ecc71, #27ae60); }
+        .bg-orange { background: linear-gradient(135deg, #e67e22, #d35400); }
 
         .menu-label { 
-            font-size: 0.78rem; 
+            font-size: 0.8rem; 
             font-weight: 600; 
             color: #334155; 
-            text-align: left;
             line-height: 1.2;
+            text-align: left;
         }
 
-        /* ระบบ Iframe */
         #systemContent {
             display: none; width: 100%; 
             height: calc(100vh - 70px);
             border: none; background: white;
         }
 
-        /* Bottom Navigation */
         .bottom-nav {
             position: fixed; bottom: 0; left: 0; right: 0;
             height: 70px; background: white;
             display: flex; justify-content: space-around; align-items: center;
-            border-top: 1px solid #eee; z-index: 2000;
+            border-top: 1px solid #edf2f7; z-index: 2000;
         }
         .nav-btn {
             display: flex; flex-direction: column; align-items: center;
-            color: #94a3b8; border: none; background: none; flex: 1; font-size: 0.7rem;
+            color: #94a3b8; border: none; background: none; flex: 1; font-size: 0.75rem;
         }
         .nav-btn.active { color: var(--primary); }
 
-        /* ปรับแต่งสำหรับมือถือจอเล็กมาก */
-        @media (max-height: 600px) {
-            .app-header { padding: 5px; }
-            .school-logo { height: 30px; }
-            .menu-label { font-size: 0.7rem; }
-            .icon-wrapper { width: 30px; height: 30px; font-size: 0.9rem; }
+        @media (max-height: 650px) {
+            .app-header { padding: 6px; }
+            .school-logo { height: 32px; }
+            .menu-label { font-size: 0.72rem; }
+            .icon-wrapper { width: 32px; height: 32px; font-size: 0.95rem; }
         }
     </style>
 </head>
@@ -119,30 +113,10 @@
     <div id="headerArea" class="app-header">
         <img src="https://raw.githubusercontent.com/joodami/school-assets/main/logo.png" alt="Logo" class="school-logo">
         <h1 class="app-title">PS-Sarabun</h1>
-        <p class="app-subtitle">โรงเรียนพิมานพิทยาสรรค์</p>
+        <p class="app-subtitle">ระบบสารบรรณอิเล็กทรอนิกส์ โรงเรียนพิมานพิทยาสรรค์</p>
     </div>
 
     <div id="mainMenu">
-        <div class="menu-item" onclick="openSystem('https://joodami.github.io/Reserve-a-car69/')">
-            <div class="icon-wrapper bg-blue"><i class="fas fa-car"></i></div>
-            <div class="menu-label">จองคิวรถ</div>
-        </div>
-
-        <div class="menu-item" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSewguRcJ9noZvMPJX1QdavSGV8Ib95WUeWVcIInTd0sPGieIA/viewform', '_blank')">
-            <div class="icon-wrapper bg-green"><i class="fas fa-file-signature"></i></div>
-            <div class="menu-label">เสนอเซ็นหนังสือ</div>
-        </div>
-
-        <div class="menu-item" onclick="openSystem('https://joodami.github.io/track-status69/')">
-            <div class="icon-wrapper bg-orange"><i class="fas fa-tasks"></i></div>
-            <div class="menu-label">ติดตามสถานะ<br>& คลังหนังสือ</div>
-        </div>
-
-        <div class="menu-item" onclick="openSystem('https://joodami.github.io/BookCertificat69/')">
-            <div class="icon-wrapper bg-purple"><i class="fas fa-certificate"></i></div>
-            <div class="menu-label">ออกเลขเกียรติบัตร</div>
-        </div>
-
         <div class="menu-item" onclick="openSystem('https://joodami.github.io/BookNumber0169/')">
             <div class="icon-wrapper bg-red"><i class="fas fa-envelope-open-text"></i></div>
             <div class="menu-label">ขอเลขหนังสือออก</div>
@@ -150,7 +124,7 @@
 
         <div class="menu-item" onclick="openSystem('https://joodami.github.io/BookNumber0269/')">
             <div class="icon-wrapper bg-teal"><i class="fas fa-gavel"></i></div>
-            <div class="menu-label">ขอเลขคำสั่ง</div>
+            <div class="menu-label">ขอเลขคำสั่งโรงเรียน</div>
         </div>
 
         <div class="menu-item" onclick="openSystem('https://joodami.github.io/BookNumber0369/')">
@@ -158,9 +132,29 @@
             <div class="menu-label">ขอเลขบันทึกข้อความ</div>
         </div>
 
+        <div class="menu-item" onclick="openSystem('https://joodami.github.io/BookCertificat69/')">
+            <div class="icon-wrapper bg-purple"><i class="fas fa-certificate"></i></div>
+            <div class="menu-label">ออกเลขเกียรติบัตร</div>
+        </div>
+
+        <div class="menu-item" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSewguRcJ9noZvMPJX1QdavSGV8Ib95WUeWVcIInTd0sPGieIA/viewform', '_blank')">
+            <div class="icon-wrapper bg-green"><i class="fas fa-file-signature"></i></div>
+            <div class="menu-label">เสนอเซ็นหนังสือ<br>ราชการ</div>
+        </div>
+
+        <div class="menu-item" onclick="openSystem('https://joodami.github.io/track-status69/')">
+            <div class="icon-wrapper bg-orange"><i class="fas fa-tasks"></i></div>
+            <div class="menu-label">ติดตามสถานะ<br>หนังสือเสนอเซ็น</div>
+        </div>
+
+        <div class="menu-item" onclick="openSystem('https://joodami.github.io/Reserve-a-car69/')">
+            <div class="icon-wrapper bg-blue"><i class="fas fa-car"></i></div>
+            <div class="menu-label">จองคิวรถยนต์<br>ส่วนราชการ</div>
+        </div>
+
         <div class="menu-item" onclick="openSystem('https://joodami.github.io/SearchOrder69/')">
             <div class="icon-wrapper bg-orange"><i class="fas fa-search"></i></div>
-            <div class="menu-label">สืบค้นคำสั่ง</div>
+            <div class="menu-label">สืบค้นคำสั่งโรงเรียน</div>
         </div>
     </div>
 
