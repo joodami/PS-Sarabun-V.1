@@ -11,11 +11,8 @@
         :root {
             --primary: #1a5276;
             --bg: #f8fafc;
-            /* โทนสีใหม่: ไล่เฉดสีน้ำเงิน-ฟ้า */
-            --grad-1: linear-gradient(135deg, #2c3e50, #4ca1af);
-            --grad-2: linear-gradient(135deg, #1e3c72, #2a5298);
-            --grad-3: linear-gradient(135deg, #36d1dc, #5b86e5);
-            --grad-4: linear-gradient(135deg, #2b5876, #4e4376);
+            /* โทนสีเลขหนังสือออก: ชมพู-ส้ม */
+            --main-gradient: linear-gradient(135deg, #FF5F6D, #FFC371);
         }
 
         body, html {
@@ -31,7 +28,7 @@
             height: 100vh;
         }
 
-        /* --- Header: ล็อคค่าที่สวยงามแล้ว --- */
+        /* --- Header: ล็อคความกระชับ --- */
         .app-header {
             background: #ffffff;
             text-align: center;
@@ -63,7 +60,7 @@
             margin-right: auto;
         }
 
-        /* มือถือ: ล็อคค่าที่เห็นครบ 8 เมนู */
+        /* มือถือ: ล็อคค่าเดิมที่เห็นครบ 8 เมนู */
         @media (max-width: 1023px) {
             #mainMenu {
                 grid-template-columns: repeat(2, 1fr);
@@ -78,7 +75,7 @@
             .menu-item { height: 75px; padding: 0; }
         }
 
-        /* คอมพิวเตอร์: ล็อคค่าที่พอดี ไม่ล้นจอ */
+        /* คอมพิวเตอร์: ล็อคค่าเดิมที่พอดี ไม่ล้นจอ */
         @media (min-width: 1024px) {
             #mainMenu {
                 grid-template-columns: repeat(4, 1fr);
@@ -110,18 +107,10 @@
             align-items: center; 
             justify-content: center;
             color: white;
-            box-shadow: 0 4px 10px rgba(26, 82, 118, 0.2);
+            /* ปรับทุกไอคอนให้เป็นโทนเดียวกัน */
+            background: var(--main-gradient);
+            box-shadow: 0 4px 10px rgba(255, 95, 109, 0.3);
         }
-
-        /* --- การคุมโทนสีใหม่ (Blue Theme) --- */
-        .c1 { background: var(--grad-1); }
-        .c2 { background: var(--grad-2); }
-        .c3 { background: var(--grad-3); }
-        .c4 { background: var(--grad-4); }
-        .c5 { background: var(--grad-2); }
-        .c6 { background: var(--grad-1); }
-        .c7 { background: var(--grad-4); }
-        .c8 { background: var(--grad-3); }
 
         .menu-label { text-align: center; line-height: 1.2; white-space: nowrap; }
 
@@ -152,35 +141,35 @@
 
     <main id="mainMenu">
         <div class="menu-item" onclick="openSystem('https://joodami.github.io/BookNumber0169/')">
-            <div class="icon-box c1"><i class="fas fa-file-export"></i></div>
+            <div class="icon-box"><i class="fas fa-file-export"></i></div>
             <span class="menu-label">เลขหนังสือออก</span>
         </div>
         <div class="menu-item" onclick="openSystem('https://joodami.github.io/BookNumber0269/')">
-            <div class="icon-box c2"><i class="fas fa-gavel"></i></div>
+            <div class="icon-box"><i class="fas fa-gavel"></i></div>
             <span class="menu-label">เลขคำสั่ง</span>
         </div>
         <div class="menu-item" onclick="openSystem('https://joodami.github.io/BookNumber0369/')">
-            <div class="icon-box c3"><i class="fas fa-sticky-note"></i></div>
+            <div class="icon-box"><i class="fas fa-sticky-note"></i></div>
             <span class="menu-label">เลขบันทึกข้อความ</span>
         </div>
         <div class="menu-item" onclick="openSystem('https://joodami.github.io/BookCertificat69/')">
-            <div class="icon-box c4"><i class="fas fa-award"></i></div>
+            <div class="icon-box"><i class="fas fa-award"></i></div>
             <span class="menu-label">ออกเกียรติบัตร</span>
         </div>
         <div class="menu-item" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSewguRcJ9noZvMPJX1QdavSGV8Ib95WUeWVcIInTd0sPGieIA/viewform', '_blank')">
-            <div class="icon-box c5"><i class="fas fa-pen-nib"></i></div>
+            <div class="icon-box"><i class="fas fa-pen-nib"></i></div>
             <span class="menu-label">เสนอเซ็นหนังสือ</span>
         </div>
         <div class="menu-item" onclick="openSystem('https://joodami.github.io/track-status69/')">
-            <div class="icon-box c6"><i class="fas fa-history"></i></div>
+            <div class="icon-box"><i class="fas fa-history"></i></div>
             <span class="menu-label">ติดตามสถานะ</span>
         </div>
         <div class="menu-item" onclick="openSystem('https://joodami.github.io/Reserve-a-car69/')">
-            <div class="icon-box c7"><i class="fas fa-car-side"></i></div>
+            <div class="icon-box"><i class="fas fa-car-side"></i></div>
             <span class="menu-label">จองรถส่วนกลาง</span>
         </div>
         <div class="menu-item" onclick="openSystem('https://joodami.github.io/SearchOrder69/')">
-            <div class="icon-box c8"><i class="fas fa-search"></i></div>
+            <div class="icon-box"><i class="fas fa-search"></i></div>
             <span class="menu-label">สืบค้นคำสั่ง</span>
         </div>
     </main>
