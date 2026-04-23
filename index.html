@@ -26,45 +26,47 @@
             height: 100vh;
         }
 
-        /* --- Header แบบเดิมที่คุณครูชอบ --- */
+        /* --- Header ปรับพื้นที่ว่างให้กระชับขึ้น --- */
         .app-header {
             background: #ffffff;
-            padding: clamp(10px, 2.5vh, 25px) 15px;
+            padding: 10px 15px 5px 15px; /* ลด Padding ด้านล่างเหลือ 5px */
             text-align: center;
-            border-bottom: 5px solid var(--primary);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            border-bottom: 4px solid var(--primary);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
             flex-shrink: 0;
         }
 
         .school-logo {
-            height: clamp(40px, 6.5vh, 75px);
+            height: clamp(35px, 5.5vh, 65px);
             width: auto;
-            margin-bottom: 5px;
+            margin-bottom: 3px;
         }
 
         .app-title {
-            font-size: clamp(1.3rem, 3.5vw, 2.2rem);
+            font-size: clamp(1.2rem, 3.2vw, 2rem);
             font-weight: 700;
             color: var(--primary);
             margin: 0;
+            line-height: 1.2;
         }
 
         .app-subtitle {
-            font-size: clamp(0.75rem, 1.8vw, 1.1rem);
+            font-size: clamp(0.7rem, 1.7vw, 1rem);
             color: #475569;
-            margin-top: 4px;
+            margin-top: 2px;
+            margin-bottom: 5px; /* คุมระยะห่างใต้ข้อความ */
             font-weight: 600;
         }
 
-        /* --- Grid เมนู: ปรับขนาดไอคอนให้เล็กลงเพื่อประหยัดพื้นที่ในมือถือ --- */
+        /* --- Grid เมนู: ปรับให้กระทัดรัดเพื่อบราว์เซอร์มือถือ --- */
         #mainMenu {
             flex-grow: 1;
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             grid-template-rows: repeat(4, 1fr);
-            gap: 10px; /* ลดช่องว่างให้น้อยลงเพื่อให้เมนูไม่ล้น */
-            padding: 15px;
-            margin-bottom: 75px;
+            gap: 8px; /* ลดช่องว่างระหว่างเมนู */
+            padding: 10px 15px;
+            margin-bottom: 70px; /* เว้นที่ให้ Nav ล่าง */
             align-content: center;
             max-width: 1000px;
             margin-left: auto;
@@ -76,8 +78,8 @@
             #mainMenu {
                 grid-template-columns: repeat(4, 1fr);
                 grid-template-rows: repeat(2, 1fr);
-                gap: 30px;
-                padding: 30px 60px;
+                gap: 25px;
+                padding: 20px 60px;
             }
         }
 
@@ -89,22 +91,23 @@
             text-decoration: none !important;
             cursor: pointer;
             transition: transform 0.2s;
+            min-height: 0;
         }
 
-        .menu-item:active { transform: scale(0.9); }
+        .menu-item:active { transform: scale(0.92); }
 
-        /* ไอคอนเล็กลงตามคำขอ (ในมือถือจะอยู่ที่ประมาณ 45-50px) */
+        /* ปรับขนาดไอคอนให้พอดีกับหน้าจอมือถือที่มี Address bar */
         .icon-box {
-            width: clamp(45px, 6.5vh, 75px);
-            height: clamp(45px, 6.5vh, 75px);
-            border-radius: 18px;
+            width: clamp(42px, 6vh, 70px);
+            height: clamp(42px, 6vh, 70px);
+            border-radius: 16px;
             display: flex; 
             align-items: center; 
             justify-content: center;
-            font-size: clamp(1.2rem, 2.5vh, 1.8rem);
+            font-size: clamp(1.1rem, 2.2vh, 1.7rem);
             color: white;
-            margin-bottom: 6px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-bottom: 4px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.08);
         }
 
         .c1 { background: linear-gradient(135deg, #FF5F6D, #FFC371); }
@@ -117,7 +120,7 @@
         .c8 { background: linear-gradient(135deg, #4b6cb7, #182848); }
 
         .menu-label { 
-            font-size: clamp(0.75rem, 1.8vh, 1rem);
+            font-size: clamp(0.7rem, 1.7vh, 0.95rem);
             font-weight: 600; 
             color: #334155;
             text-align: center;
@@ -125,20 +128,20 @@
             white-space: nowrap;
         }
 
-        #systemContent { display: none; width: 100%; height: calc(100vh - 75px); border: none; }
+        #systemContent { display: none; width: 100%; height: calc(100vh - 70px); border: none; }
 
         .bottom-nav {
             position: fixed; bottom: 0; left: 0; right: 0;
-            height: 75px; background: white;
+            height: 70px; background: white;
             display: flex; justify-content: space-around; align-items: center;
             border-top: 1px solid #e2e8f0; z-index: 2000;
         }
         .nav-btn {
             display: flex; flex-direction: column; align-items: center;
-            color: #94a3b8; border: none; background: none; flex: 1; font-size: 0.8rem;
+            color: #94a3b8; border: none; background: none; flex: 1; font-size: 0.75rem;
         }
         .nav-btn.active { color: var(--primary); font-weight: 600; }
-        .nav-btn i { font-size: 1.5rem; margin-bottom: 4px; }
+        .nav-btn i { font-size: 1.4rem; margin-bottom: 3px; }
     </style>
 </head>
 <body>
@@ -147,7 +150,7 @@
     <header id="headerArea" class="app-header">
         <img src="https://raw.githubusercontent.com/joodami/school-assets/main/logo.png" alt="Logo" class="school-logo">
         <h1 class="app-title">PS-Sarabun</h1>
-        <p class="app-subtitle">งานสารบรรณ โรงเรียนพิมานพิทยาสรรค์</p>
+        <p class="app-subtitle">ระบบสารบรรณอิเล็กทรอนิกส์ โรงเรียนพิมานพิทยาสรรค์</p>
     </header>
 
     <main id="mainMenu">
@@ -180,7 +183,8 @@
             <span class="menu-label">จองรถส่วนกลาง</span>
         </div>
         <div class="menu-item" onclick="openSystem('https://joodami.github.io/SearchOrder69/')">
-            <div class="icon-box c8"><i class="fas fa-search"></i></div> <span class="menu-label">สืบค้นคำสั่ง</span>
+            <div class="icon-box c8"><i class="fas fa-search"></i></div>
+            <span class="menu-label">สืบค้นคำสั่ง</span>
         </div>
     </main>
 
@@ -188,8 +192,7 @@
 
     <nav class="bottom-nav">
         <button onclick="goHome()" class="nav-btn active">
-            <i class="fas fa-th-large"></i>
-            <span>หน้าแรก</span>
+            <i class="fas fa-home"></i> <span>หน้าแรก</span>
         </button>
         <button onclick="window.location.reload()" class="nav-btn">
             <i class="fas fa-sync-alt"></i>
