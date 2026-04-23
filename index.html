@@ -11,8 +11,8 @@
         :root {
             --primary: #1a5276;
             --bg: #f8fafc;
-            /* โทนสีเลขหนังสือออก: ชมพู-ส้ม */
-            --main-gradient: linear-gradient(135deg, #FF5F6D, #FFC371);
+            /* ปรับโทนสีเป็นสีเทาเข้มตามที่คุณครูแจ้งค่ะ */
+            --main-gradient: linear-gradient(135deg, #434343, #000000); 
         }
 
         body, html {
@@ -51,7 +51,7 @@
             .app-subtitle { font-size: 0.95rem; margin-top: 2px; margin-bottom: 5px; color: #475569; }
         }
 
-        /* --- Grid เมนูหลัก: ล็อคค่าระยะบรรทัดและขนาด --- */
+        /* --- Grid เมนูหลัก: ล็อคค่าระยะบรรทัดและขนาดตามเดิม --- */
         #mainMenu {
             flex-grow: 1;
             display: grid;
@@ -107,9 +107,9 @@
             align-items: center; 
             justify-content: center;
             color: white;
-            /* ปรับทุกไอคอนให้เป็นโทนเดียวกัน */
+            /* พื้นหลังสีเทาเข้มตามที่คุณครูต้องการ */
             background: var(--main-gradient);
-            box-shadow: 0 4px 10px rgba(255, 95, 109, 0.3);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
         .menu-label { text-align: center; line-height: 1.2; white-space: nowrap; }
