@@ -10,7 +10,7 @@
     <style>
         :root {
             --primary: #1a5276;
-            --bg: #f0f4f8;
+            --bg: #ffffff; /* ปรับพื้นหลังขาวสะอาดแบบแอปธนาคาร */
         }
 
         body, html {
@@ -26,136 +26,115 @@
             height: 100vh;
         }
 
-        /* --- Header ปรับปรุงใหม่เพื่อความชัดเจนในมือถือ --- */
+        /* --- Header สไตล์แอปธนาคาร --- */
         .app-header {
-            background: #ffffff;
-            padding: 15px 10px; /* เพิ่มพื้นที่แนวตั้งในมือถือ */
+            background: linear-gradient(180deg, #1a5276 0%, #2980b9 100%);
+            padding: 20px 15px;
             text-align: center;
-            border-bottom: 5px solid var(--primary);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            color: white;
+            border-bottom-left-radius: 25px;
+            border-bottom-right-radius: 25px;
             flex-shrink: 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
         .school-logo {
-            height: 55px; /* ล็อคขนาดโลโก้ในมือถือให้ชัดเจน */
+            height: 50px;
             width: auto;
             margin-bottom: 8px;
+            filter: brightness(0) invert(1); /* ทำให้โลโก้เป็นสีขาว */
         }
 
-        .app-title {
-            font-size: 1.6rem; /* เพิ่มขนาดหัวข้อหลักในมือถือ */
-            font-weight: 700;
-            color: var(--primary);
-            margin: 0;
-            line-height: 1.1;
-        }
+        .app-title { font-size: 1.4rem; font-weight: 700; margin: 0; }
+        .app-subtitle { font-size: 0.85rem; opacity: 0.9; font-weight: 400; }
 
-        .app-subtitle {
-            font-size: 0.9rem; /* เพิ่มขนาดคำอธิบายในมือถือ */
-            color: #334155; /* ปรับสีให้เข้มขึ้นเพื่อให้อ่านง่าย */
-            margin-top: 5px;
-            font-weight: 600;
-        }
-
-        /* สำหรับหน้าจอคอมพิวเตอร์ (ไม่เปลี่ยนแปลงตามที่คุณครูพอใจแล้ว) */
-        @media (min-width: 1024px) {
-            .app-header {
-                padding: 30px 20px;
-            }
-            .school-logo {
-                height: 85px;
-            }
-            .app-title {
-                font-size: 2.5rem;
-            }
-            .app-subtitle {
-                font-size: 1.2rem;
-                margin-top: 8px;
-            }
-        }
-
-        /* --- พื้นที่เมนูหลัก --- */
+        /* --- Grid เมนูสไตล์แอปธนาคาร (ไอคอนบน ข้อความล่าง) --- */
         #mainMenu {
             flex-grow: 1;
-            padding: 8px 15px;
             display: grid;
-            gap: 1vh;
-            grid-template-columns: 1fr;
-            align-content: stretch;
-            overflow: hidden;
-            margin-bottom: 70px; 
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-            width: 100%;
+            grid-template-columns: repeat(2, 1fr); /* 2 คอลัมน์ */
+            grid-template-rows: repeat(4, 1fr);    /* 4 แถว */
+            gap: 15px;
+            padding: 25px 20px;
+            margin-bottom: 75px;
+            align-items: center;
         }
 
         @media (min-width: 1024px) {
             #mainMenu {
-                grid-template-columns: repeat(2, 1fr);
-                grid-template-rows: repeat(4, 1fr);
-                gap: 20px;
-                padding: 30px 60px;
-                margin-bottom: 80px;
+                grid-template-columns: repeat(4, 1fr); /* ในคอมปรับเป็น 4 คอลัมน์กว้างๆ */
+                grid-template-rows: repeat(2, 1fr);
+                max-width: 1000px;
+                margin: 0 auto 80px auto;
+                gap: 30px;
             }
         }
 
         .menu-item {
-            background: white;
-            border-radius: 12px;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            padding: 0 15px;
+            justify-content: center;
             text-decoration: none !important;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
-            border: 1px solid rgba(0,0,0,0.05);
             transition: all 0.2s ease;
             cursor: pointer;
-            min-height: 0; 
         }
 
-        .menu-item:active { transform: scale(0.97); background: #f8fafc; }
+        .menu-item:active { transform: scale(0.9); }
 
+        /* กล่องไอคอนวงกลม/มน */
         .icon-box {
-            width: clamp(32px, 5.5vh, 55px);
-            height: clamp(32px, 5.5vh, 55px);
-            border-radius: 10px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: clamp(1rem, 2.5vh, 1.6rem);
-            color: white; margin-right: 12px;
-            flex-shrink: 0;
+            width: clamp(55px, 8vh, 75px);
+            height: clamp(55px, 8vh, 75px);
+            border-radius: 22px; /* ทรงมนสวยงาม */
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            font-size: 1.6rem;
+            color: white;
+            margin-bottom: 10px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
         }
 
-        .c1 { background: linear-gradient(135deg, #e74c3c, #c0392b); }
-        .c2 { background: linear-gradient(135deg, #1abc9c, #16a085); }
-        .c3 { background: linear-gradient(135deg, #3498db, #2980b9); }
-        .c4 { background: linear-gradient(135deg, #9b59b6, #8e44ad); }
-        .c5 { background: linear-gradient(135deg, #f39c12, #e67e22); }
-        .c6 { background: linear-gradient(135deg, #34495e, #2c3e50); }
-        .c7 { background: linear-gradient(135deg, #27ae60, #219150); }
-        .c8 { background: linear-gradient(135deg, #d35400, #a04000); }
+        /* สี Gradient ที่ดูซอฟต์ลงแบบ UI สมัยใหม่ */
+        .c1 { background: linear-gradient(135deg, #FF5F6D, #FFC371); }
+        .c2 { background: linear-gradient(135deg, #2193b0, #6dd5ed); }
+        .c3 { background: linear-gradient(135deg, #11998e, #38ef7d); }
+        .c4 { background: linear-gradient(135deg, #ee0979, #ff6a00); }
+        .c5 { background: linear-gradient(135deg, #4568dc, #b06ab3); }
+        .c6 { background: linear-gradient(135deg, #00b09b, #96c93d); }
+        .c7 { background: linear-gradient(135deg, #f2994a, #f2c94c); }
+        .c8 { background: linear-gradient(135deg, #4b6cb7, #182848); }
 
         .menu-label { 
-            font-size: clamp(0.85rem, 2vh, 1.15rem);
+            font-size: 0.85rem;
             font-weight: 600; 
-            color: #1e293b;
-            white-space: nowrap; 
+            color: #334155;
+            text-align: center;
+            line-height: 1.3;
+            /* ป้องกันชื่อเมนูยาวเกินไปแล้วเบียดกัน */
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
-        #systemContent { display: none; width: 100%; height: calc(100vh - 70px); border: none; background: white; }
+        /* Iframe */
+        #systemContent { display: none; width: 100%; height: calc(100vh - 75px); border: none; }
 
+        /* Nav ล่าง */
         .bottom-nav {
             position: fixed; bottom: 0; left: 0; right: 0;
-            height: 70px; background: white;
+            height: 75px; background: white;
             display: flex; justify-content: space-around; align-items: center;
-            border-top: 1px solid #e2e8f0; z-index: 2000;
+            border-top: 1px solid #f1f5f9; z-index: 2000;
         }
         .nav-btn {
             display: flex; flex-direction: column; align-items: center;
             color: #94a3b8; border: none; background: none; flex: 1; font-size: 0.75rem;
         }
         .nav-btn.active { color: var(--primary); font-weight: 600; }
-        .nav-btn i { font-size: 1.4rem; margin-bottom: 2px; }
+        .nav-btn i { font-size: 1.5rem; margin-bottom: 4px; }
     </style>
 </head>
 <body>
@@ -164,79 +143,77 @@
     <header id="headerArea" class="app-header">
         <img src="https://raw.githubusercontent.com/joodami/school-assets/main/logo.png" alt="Logo" class="school-logo">
         <h1 class="app-title">PS-Sarabun</h1>
-        <p class="app-subtitle">งานสารบรรณ โรงเรียนพิมานพิทยาสรรค์</p>
+        <p class="app-subtitle">โรงเรียนพิมานพิทยาสรรค์</p>
     </header>
 
     <main id="mainMenu">
         <div class="menu-item" onclick="openSystem('https://joodami.github.io/BookNumber0169/')">
-            <div class="icon-box c1"><i class="fas fa-envelope-open-text"></i></div>
-            <span class="menu-label">ขอเลขหนังสือออก</span>
+            <div class="icon-box c1"><i class="fas fa-file-export"></i></div>
+            <span class="menu-label">เลขหนังสือออก</span>
         </div>
         <div class="menu-item" onclick="openSystem('https://joodami.github.io/BookNumber0269/')">
             <div class="icon-box c2"><i class="fas fa-gavel"></i></div>
-            <span class="menu-label">ขอเลขคำสั่งโรงเรียน</span>
+            <span class="menu-label">เลขคำสั่ง</span>
         </div>
         <div class="menu-item" onclick="openSystem('https://joodami.github.io/BookNumber0369/')">
             <div class="icon-box c3"><i class="fas fa-sticky-note"></i></div>
-            <span class="menu-label">ขอเลขบันทึกข้อความ</span>
+            <span class="menu-label">เลขบันทึกข้อความ</span>
         </div>
         <div class="menu-item" onclick="openSystem('https://joodami.github.io/BookCertificat69/')">
-            <div class="icon-box c4"><i class="fas fa-certificate"></i></div>
-            <span class="menu-label">ออกเลขเกียรติบัตร</span>
+            <div class="icon-box c4"><i class="fas fa-award"></i></div>
+            <span class="menu-label">ออกเกียรติบัตร</span>
         </div>
         <div class="menu-item" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSewguRcJ9noZvMPJX1QdavSGV8Ib95WUeWVcIInTd0sPGieIA/viewform', '_blank')">
-            <div class="icon-box c5"><i class="fas fa-file-signature"></i></div>
-            <span class="menu-label">เสนอเซ็นหนังสือราชการ</span>
+            <div class="icon-box c5"><i class="fas fa-pen-nib"></i></div>
+            <span class="menu-label">เสนอเซ็นหนังสือ</span>
         </div>
         <div class="menu-item" onclick="openSystem('https://joodami.github.io/track-status69/')">
-            <div class="icon-box c6"><i class="fas fa-tasks"></i></div>
-            <span class="menu-label">ติดตามสถานะหนังสือเสนอเซ็น</span>
+            <div class="icon-box c6"><i class="fas fa-history"></i></div>
+            <span class="menu-label">ติดตามสถานะ</span>
         </div>
         <div class="menu-item" onclick="openSystem('https://joodami.github.io/Reserve-a-car69/')">
-            <div class="icon-box c7"><i class="fas fa-car"></i></div>
-            <span class="menu-label">จองคิวรถยนต์ส่วนราชการ</span>
+            <div class="icon-box c7"><i class="fas fa-car-side"></i></div>
+            <span class="menu-label">จองรถส่วนกลาง</span>
         </div>
         <div class="menu-item" onclick="openSystem('https://joodami.github.io/SearchOrder69/')">
-            <div class="icon-box c8"><i class="fas fa-search"></i></div>
-            <span class="menu-label">สืบค้นคำสั่งโรงเรียน</span>
+            <div class="icon-box c8"><i class="fas fa-search-doc"></i></div>
+            <span class="menu-label">สืบค้นคำสั่ง</span>
         </div>
     </main>
 
     <iframe id="systemContent" src=""></iframe>
 
     <nav class="bottom-nav">
-        <button onclick="goHome()" class="nav-btn active" id="btnHome">
-            <i class="fas fa-home"></i>
-            <span>หน้าหลัก</span>
+        <button onclick="goHome()" class="nav-btn active">
+            <i class="fas fa-th-large"></i>
+            <span>หน้าแรก</span>
         </button>
         <button onclick="window.location.reload()" class="nav-btn">
             <i class="fas fa-sync-alt"></i>
             <span>รีเฟรช</span>
         </button>
         <button onclick="alert('งานสารบรรณ โรงเรียนพิมานพิทยาสรรค์')" class="nav-btn">
-            <i class="fas fa-info-circle"></i>
+            <i class="fas fa-user-circle"></i>
             <span>ติดต่อ</span>
         </button>
     </nav>
 </div>
 
 <script>
-    const mainMenu = document.getElementById('mainMenu');
-    const headerArea = document.getElementById('headerArea');
-    const systemContent = document.getElementById('systemContent');
-
     function openSystem(url) {
-        headerArea.style.display = 'none';
-        mainMenu.style.display = 'none';
-        systemContent.style.display = 'block';
-        systemContent.src = url;
+        document.getElementById('headerArea').style.display = 'none';
+        document.getElementById('mainMenu').style.display = 'none';
+        const iframe = document.getElementById('systemContent');
+        iframe.style.display = 'block';
+        iframe.src = url;
     }
 
     function goHome() {
-        systemContent.src = "";
-        systemContent.style.display = 'none';
-        headerArea.style.display = 'block';
-        mainMenu.style.display = 'grid';
+        const iframe = document.getElementById('systemContent');
+        iframe.src = "";
+        iframe.style.display = 'none';
+        document.getElementById('headerArea').style.display = 'block';
+        document.getElementById('mainMenu').style.display = 'grid';
     }
 </script>
 
