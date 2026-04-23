@@ -26,10 +26,10 @@
             height: 100vh;
         }
 
-        /* --- Header ปรับพื้นที่ว่างให้กระชับขึ้น --- */
+        /* --- Header: กระชับพื้นที่ในมือถือ --- */
         .app-header {
             background: #ffffff;
-            padding: 10px 15px 5px 15px; /* ลด Padding ด้านล่างเหลือ 5px */
+            padding: 10px 10px 0 10px; /* ลด Padding ล่างให้เหลือน้อยที่สุด */
             text-align: center;
             border-bottom: 4px solid var(--primary);
             box-shadow: 0 4px 8px rgba(0,0,0,0.05);
@@ -37,50 +37,56 @@
         }
 
         .school-logo {
-            height: clamp(35px, 5.5vh, 65px);
+            height: 45px; /* ล็อคขนาดโลโก้ในมือถือ */
             width: auto;
-            margin-bottom: 3px;
+            margin-bottom: 2px;
         }
 
         .app-title {
-            font-size: clamp(1.2rem, 3.2vw, 2rem);
+            font-size: 1.3rem;
             font-weight: 700;
             color: var(--primary);
             margin: 0;
-            line-height: 1.2;
+            line-height: 1.1;
         }
 
         .app-subtitle {
-            font-size: clamp(0.7rem, 1.7vw, 1rem);
+            font-size: 0.8rem;
             color: #475569;
             margin-top: 2px;
-            margin-bottom: 5px; /* คุมระยะห่างใต้ข้อความ */
+            margin-bottom: 8px;
             font-weight: 600;
         }
 
-        /* --- Grid เมนู: ปรับให้กระทัดรัดเพื่อบราว์เซอร์มือถือ --- */
+        /* --- Grid เมนู: ปรับปรุงเฉพาะมือถือให้เกาะกลุ่มกัน --- */
         #mainMenu {
             flex-grow: 1;
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            grid-template-rows: repeat(4, 1fr);
-            gap: 8px; /* ลดช่องว่างระหว่างเมนู */
-            padding: 10px 15px;
-            margin-bottom: 70px; /* เว้นที่ให้ Nav ล่าง */
-            align-content: center;
-            max-width: 1000px;
-            margin-left: auto;
-            margin-right: auto;
+            grid-template-rows: repeat(4, 1fr); /* บังคับ 4 แถวพอดีจอ */
+            gap: 5px; /* ลดช่องว่างระหว่างเมนูให้แคบลง */
+            padding: 5px 20px; /* ลด padding บน-ล่าง */
+            margin-bottom: 75px; 
+            align-content: center; /* ให้เมนูมากองรวมกันตรงกลาง */
             width: 100%;
         }
 
+        /* สำหรับหน้าจอคอมพิวเตอร์ (คงไว้ตามเดิมที่คุณครูพอใจ) */
         @media (min-width: 1024px) {
+            .app-header { padding: 30px 20px; }
+            .school-logo { height: 80px; }
+            .app-title { font-size: 2.5rem; }
+            .app-subtitle { font-size: 1.2rem; margin-bottom: 15px; }
+            
             #mainMenu {
                 grid-template-columns: repeat(4, 1fr);
                 grid-template-rows: repeat(2, 1fr);
-                gap: 25px;
-                padding: 20px 60px;
+                gap: 30px;
+                padding: 40px 100px;
+                margin-bottom: 80px;
             }
+            .icon-box { width: 80px !important; height: 80px !important; font-size: 2rem !important; }
+            .menu-label { font-size: 1.1rem !important; }
         }
 
         .menu-item {
@@ -90,25 +96,25 @@
             justify-content: center;
             text-decoration: none !important;
             cursor: pointer;
-            transition: transform 0.2s;
-            min-height: 0;
+            padding: 5px 0;
         }
 
-        .menu-item:active { transform: scale(0.92); }
-
-        /* ปรับขนาดไอคอนให้พอดีกับหน้าจอมือถือที่มี Address bar */
+        /* ไอคอนในมือถือให้เล็กลงและเกาะกลุ่ม */
         .icon-box {
-            width: clamp(42px, 6vh, 70px);
-            height: clamp(42px, 6vh, 70px);
-            border-radius: 16px;
+            width: 50px; 
+            height: 50px;
+            border-radius: 15px;
             display: flex; 
             align-items: center; 
             justify-content: center;
-            font-size: clamp(1.1rem, 2.2vh, 1.7rem);
+            font-size: 1.3rem;
             color: white;
             margin-bottom: 4px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+            transition: transform 0.2s;
         }
+
+        .menu-item:active .icon-box { transform: scale(0.9); }
 
         .c1 { background: linear-gradient(135deg, #FF5F6D, #FFC371); }
         .c2 { background: linear-gradient(135deg, #2193b0, #6dd5ed); }
@@ -120,7 +126,7 @@
         .c8 { background: linear-gradient(135deg, #4b6cb7, #182848); }
 
         .menu-label { 
-            font-size: clamp(0.7rem, 1.7vh, 0.95rem);
+            font-size: 0.8rem;
             font-weight: 600; 
             color: #334155;
             text-align: center;
@@ -192,7 +198,8 @@
 
     <nav class="bottom-nav">
         <button onclick="goHome()" class="nav-btn active">
-            <i class="fas fa-home"></i> <span>หน้าแรก</span>
+            <i class="fas fa-home"></i>
+            <span>หน้าแรก</span>
         </button>
         <button onclick="window.location.reload()" class="nav-btn">
             <i class="fas fa-sync-alt"></i>
