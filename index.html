@@ -11,8 +11,8 @@
         :root {
             --primary: #1a5276;
             --bg: #f8fafc;
-            /* ปรับโทนสีเป็นสีเทาเข้มตามที่คุณครูแจ้งค่ะ */
-            --main-gradient: linear-gradient(135deg, #434343, #000000); 
+            /* ปรับเป็นสีเทาธรรมดา (Medium Grey) ไม่เข้มจัดค่ะ */
+            --main-gradient: linear-gradient(135deg, #bdc3c7, #8e9eab); 
         }
 
         body, html {
@@ -51,7 +51,7 @@
             .app-subtitle { font-size: 0.95rem; margin-top: 2px; margin-bottom: 5px; color: #475569; }
         }
 
-        /* --- Grid เมนูหลัก: ล็อคค่าระยะบรรทัดและขนาดตามเดิม --- */
+        /* --- Grid เมนูหลัก: ล็อคค่าเดิมเป๊ะๆ --- */
         #mainMenu {
             flex-grow: 1;
             display: grid;
@@ -60,7 +60,7 @@
             margin-right: auto;
         }
 
-        /* มือถือ: ล็อคค่าเดิมที่เห็นครบ 8 เมนู */
+        /* มือถือ: ล็อคค่าเดิมที่คุณครูโอเคแล้ว */
         @media (max-width: 1023px) {
             #mainMenu {
                 grid-template-columns: repeat(2, 1fr);
@@ -75,7 +75,7 @@
             .menu-item { height: 75px; padding: 0; }
         }
 
-        /* คอมพิวเตอร์: ล็อคค่าเดิมที่พอดี ไม่ล้นจอ */
+        /* คอมพิวเตอร์: ล็อคค่าเดิมที่พอดีหน้าจอ */
         @media (min-width: 1024px) {
             #mainMenu {
                 grid-template-columns: repeat(4, 1fr);
@@ -107,9 +107,9 @@
             align-items: center; 
             justify-content: center;
             color: white;
-            /* พื้นหลังสีเทาเข้มตามที่คุณครูต้องการ */
+            /* พื้นหลังสีเทาธรรมดา */
             background: var(--main-gradient);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .menu-label { text-align: center; line-height: 1.2; white-space: nowrap; }
