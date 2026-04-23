@@ -26,67 +26,69 @@
             height: 100vh;
         }
 
-        /* --- Header: กระชับพื้นที่ในมือถือ --- */
+        /* --- Header: ปรับตามอุปกรณ์ --- */
         .app-header {
             background: #ffffff;
-            padding: 10px 10px 0 10px; /* ลด Padding ล่างให้เหลือน้อยที่สุด */
             text-align: center;
             border-bottom: 4px solid var(--primary);
             box-shadow: 0 4px 8px rgba(0,0,0,0.05);
             flex-shrink: 0;
         }
 
-        .school-logo {
-            height: 45px; /* ล็อคขนาดโลโก้ในมือถือ */
-            width: auto;
-            margin-bottom: 2px;
+        /* สไตล์ Header ในมือถือ (เน้นกระชับ) */
+        @media (max-width: 1023px) {
+            .app-header { padding: 10px 10px 0 10px; }
+            .school-logo { height: 45px; margin-bottom: 2px; }
+            .app-title { font-size: 1.3rem; line-height: 1.1; }
+            .app-subtitle { font-size: 0.8rem; margin-top: 2px; margin-bottom: 8px; font-weight: 600; }
         }
 
-        .app-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin: 0;
-            line-height: 1.1;
+        /* สไตล์ Header ในคอม (กลับไปใหญ่เหมือนเดิม) */
+        @media (min-width: 1024px) {
+            .app-header { padding: 30px 20px; }
+            .school-logo { height: 80px; margin-bottom: 10px; }
+            .app-title { font-size: 2.5rem; font-weight: 700; color: var(--primary); }
+            .app-subtitle { font-size: 1.2rem; margin-top: 8px; margin-bottom: 15px; color: #475569; font-weight: 600; }
         }
 
-        .app-subtitle {
-            font-size: 0.8rem;
-            color: #475569;
-            margin-top: 2px;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-
-        /* --- Grid เมนู: ปรับปรุงเฉพาะมือถือให้เกาะกลุ่มกัน --- */
+        /* --- Grid เมนูหลัก --- */
         #mainMenu {
             flex-grow: 1;
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            grid-template-rows: repeat(4, 1fr); /* บังคับ 4 แถวพอดีจอ */
-            gap: 5px; /* ลดช่องว่างระหว่างเมนูให้แคบลง */
-            padding: 5px 20px; /* ลด padding บน-ล่าง */
-            margin-bottom: 75px; 
-            align-content: center; /* ให้เมนูมากองรวมกันตรงกลาง */
             width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            align-content: center;
         }
 
-        /* สำหรับหน้าจอคอมพิวเตอร์ (คงไว้ตามเดิมที่คุณครูพอใจ) */
+        /* เมนูในมือถือ (เกาะกลุ่ม ไม่ล้นจอ) */
+        @media (max-width: 1023px) {
+            #mainMenu {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(4, 1fr);
+                gap: 5px;
+                padding: 5px 20px;
+                margin-bottom: 75px;
+            }
+            .icon-box { width: 50px; height: 50px; border-radius: 15px; font-size: 1.3rem; margin-bottom: 4px; }
+            .menu-label { font-size: 0.8rem; }
+            .menu-item { padding: 5px 0; }
+        }
+
+        /* เมนูในคอม (สวยงาม ใหญ่เหมือนเดิม) */
         @media (min-width: 1024px) {
-            .app-header { padding: 30px 20px; }
-            .school-logo { height: 80px; }
-            .app-title { font-size: 2.5rem; }
-            .app-subtitle { font-size: 1.2rem; margin-bottom: 15px; }
-            
             #mainMenu {
                 grid-template-columns: repeat(4, 1fr);
                 grid-template-rows: repeat(2, 1fr);
                 gap: 30px;
                 padding: 40px 100px;
                 margin-bottom: 80px;
+                max-width: 1200px;
             }
-            .icon-box { width: 80px !important; height: 80px !important; font-size: 2rem !important; }
-            .menu-label { font-size: 1.1rem !important; }
+            .icon-box { width: 90px; height: 90px; border-radius: 25px; font-size: 2.2rem; margin-bottom: 12px; }
+            .menu-label { font-size: 1.15rem; font-weight: 600; color: #1e293b; }
+            .menu-item { padding: 20px; }
+            .menu-item:hover { transform: translateY(-5px); }
         }
 
         .menu-item {
@@ -96,25 +98,16 @@
             justify-content: center;
             text-decoration: none !important;
             cursor: pointer;
-            padding: 5px 0;
+            transition: all 0.2s;
         }
 
-        /* ไอคอนในมือถือให้เล็กลงและเกาะกลุ่ม */
         .icon-box {
-            width: 50px; 
-            height: 50px;
-            border-radius: 15px;
             display: flex; 
             align-items: center; 
             justify-content: center;
-            font-size: 1.3rem;
             color: white;
-            margin-bottom: 4px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.08);
-            transition: transform 0.2s;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
         }
-
-        .menu-item:active .icon-box { transform: scale(0.9); }
 
         .c1 { background: linear-gradient(135deg, #FF5F6D, #FFC371); }
         .c2 { background: linear-gradient(135deg, #2193b0, #6dd5ed); }
@@ -125,14 +118,7 @@
         .c7 { background: linear-gradient(135deg, #f2994a, #f2c94c); }
         .c8 { background: linear-gradient(135deg, #4b6cb7, #182848); }
 
-        .menu-label { 
-            font-size: 0.8rem;
-            font-weight: 600; 
-            color: #334155;
-            text-align: center;
-            line-height: 1.2;
-            white-space: nowrap;
-        }
+        .menu-label { text-align: center; line-height: 1.2; white-space: nowrap; }
 
         #systemContent { display: none; width: 100%; height: calc(100vh - 70px); border: none; }
 
