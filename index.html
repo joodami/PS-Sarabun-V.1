@@ -11,6 +11,11 @@
         :root {
             --primary: #1a5276;
             --bg: #f8fafc;
+            /* โทนสีใหม่: ไล่เฉดสีน้ำเงิน-ฟ้า */
+            --grad-1: linear-gradient(135deg, #2c3e50, #4ca1af);
+            --grad-2: linear-gradient(135deg, #1e3c72, #2a5298);
+            --grad-3: linear-gradient(135deg, #36d1dc, #5b86e5);
+            --grad-4: linear-gradient(135deg, #2b5876, #4e4376);
         }
 
         body, html {
@@ -26,7 +31,7 @@
             height: 100vh;
         }
 
-        /* --- Header: ปรับให้กระชับ --- */
+        /* --- Header: ล็อคค่าที่สวยงามแล้ว --- */
         .app-header {
             background: #ffffff;
             text-align: center;
@@ -35,7 +40,6 @@
             flex-shrink: 0;
         }
 
-        /* มือถือ: ล็อคไว้ตามเดิมที่คุณครูโอเคแล้ว */
         @media (max-width: 1023px) {
             .app-header { padding: 8px 10px 0 10px; }
             .school-logo { height: 40px; margin-bottom: 2px; }
@@ -43,7 +47,6 @@
             .app-subtitle { font-size: 0.75rem; margin-top: 2px; margin-bottom: 5px; font-weight: 600; }
         }
 
-        /* คอมพิวเตอร์: ลดพื้นที่ว่างใต้หัวข้อให้เหลือน้อยที่สุด */
         @media (min-width: 1024px) {
             .app-header { padding: 10px 20px 5px 20px; } 
             .school-logo { height: 55px; margin-bottom: 5px; }
@@ -51,7 +54,7 @@
             .app-subtitle { font-size: 0.95rem; margin-top: 2px; margin-bottom: 5px; color: #475569; }
         }
 
-        /* --- Grid เมนูหลัก --- */
+        /* --- Grid เมนูหลัก: ล็อคค่าระยะบรรทัดและขนาด --- */
         #mainMenu {
             flex-grow: 1;
             display: grid;
@@ -60,7 +63,7 @@
             margin-right: auto;
         }
 
-        /* เมนูในมือถือ: ล็อคไว้ตามเดิม (เห็นครบ 8 อัน) */
+        /* มือถือ: ล็อคค่าที่เห็นครบ 8 เมนู */
         @media (max-width: 1023px) {
             #mainMenu {
                 grid-template-columns: repeat(2, 1fr);
@@ -75,14 +78,14 @@
             .menu-item { height: 75px; padding: 0; }
         }
 
-        /* เมนูในคอมพิวเตอร์: ปรับขนาดไอคอนให้พอดี ไม่ใหญ่เกินไป */
+        /* คอมพิวเตอร์: ล็อคค่าที่พอดี ไม่ล้นจอ */
         @media (min-width: 1024px) {
             #mainMenu {
                 grid-template-columns: repeat(4, 1fr);
-                grid-template-rows: repeat(2, 140px); /* บีบความสูงแต่ละแถวลง */
+                grid-template-rows: repeat(2, 140px);
                 gap: 15px; 
                 padding: 20px 50px;
-                max-width: 900px; /* ลดความกว้างรวมของเมนูให้กระชับขึ้น */
+                max-width: 900px;
                 align-content: center;
                 margin-bottom: 80px; 
             }
@@ -107,17 +110,18 @@
             align-items: center; 
             justify-content: center;
             color: white;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 10px rgba(26, 82, 118, 0.2);
         }
 
-        .c1 { background: linear-gradient(135deg, #FF5F6D, #FFC371); }
-        .c2 { background: linear-gradient(135deg, #2193b0, #6dd5ed); }
-        .c3 { background: linear-gradient(135deg, #11998e, #38ef7d); }
-        .c4 { background: linear-gradient(135deg, #ee0979, #ff6a00); }
-        .c5 { background: linear-gradient(135deg, #4568dc, #b06ab3); }
-        .c6 { background: linear-gradient(135deg, #00b09b, #96c93d); }
-        .c7 { background: linear-gradient(135deg, #f2994a, #f2c94c); }
-        .c8 { background: linear-gradient(135deg, #4b6cb7, #182848); }
+        /* --- การคุมโทนสีใหม่ (Blue Theme) --- */
+        .c1 { background: var(--grad-1); }
+        .c2 { background: var(--grad-2); }
+        .c3 { background: var(--grad-3); }
+        .c4 { background: var(--grad-4); }
+        .c5 { background: var(--grad-2); }
+        .c6 { background: var(--grad-1); }
+        .c7 { background: var(--grad-4); }
+        .c8 { background: var(--grad-3); }
 
         .menu-label { text-align: center; line-height: 1.2; white-space: nowrap; }
 
