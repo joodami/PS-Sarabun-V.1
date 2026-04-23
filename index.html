@@ -26,69 +26,70 @@
             height: 100vh;
         }
 
-        /* --- Header: บีบพื้นที่ให้สั้นที่สุดสำหรับมือถือ --- */
+        /* --- Header: ปรับให้กระชับ --- */
         .app-header {
             background: #ffffff;
             text-align: center;
-            border-bottom: 3px solid var(--primary);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border-bottom: 4px solid var(--primary);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
             flex-shrink: 0;
         }
 
-        /* มือถือ: เน้นความเตี้ยเพื่อเพิ่มที่ว่างให้เมนู */
+        /* มือถือ: ล็อคไว้ตามเดิมที่คุณครูโอเคแล้ว */
         @media (max-width: 1023px) {
-            .app-header { padding: 5px 10px; }
-            .school-logo { height: 35px; margin-bottom: 0; }
-            .app-title { font-size: 1.1rem; margin: 0; }
-            .app-subtitle { font-size: 0.7rem; margin-top: 0; margin-bottom: 2px; }
+            .app-header { padding: 8px 10px 0 10px; }
+            .school-logo { height: 40px; margin-bottom: 2px; }
+            .app-title { font-size: 1.2rem; line-height: 1.1; }
+            .app-subtitle { font-size: 0.75rem; margin-top: 2px; margin-bottom: 5px; font-weight: 600; }
         }
 
-        /* คอม: ขนาดใหญ่สวยงามเท่าเดิม */
+        /* คอมพิวเตอร์: ลดพื้นที่ว่างใต้หัวข้อให้เหลือน้อยที่สุด */
         @media (min-width: 1024px) {
-            .app-header { padding: 25px 20px; }
-            .school-logo { height: 75px; margin-bottom: 8px; }
-            .app-title { font-size: 2.3rem; }
-            .app-subtitle { font-size: 1.1rem; margin-top: 5px; margin-bottom: 12px; }
+            .app-header { padding: 10px 20px 5px 20px; } 
+            .school-logo { height: 55px; margin-bottom: 5px; }
+            .app-title { font-size: 1.8rem; font-weight: 700; color: var(--primary); margin: 0; }
+            .app-subtitle { font-size: 0.95rem; margin-top: 2px; margin-bottom: 5px; color: #475569; }
         }
 
-        /* --- Grid เมนู: บังคับให้ชิดกันในมือถือ --- */
+        /* --- Grid เมนูหลัก --- */
         #mainMenu {
             flex-grow: 1;
             display: grid;
             width: 100%;
-            margin: 0 auto;
-            overflow: hidden;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        /* สำหรับมือถือ: บีบแถวให้ชิดกันที่สุด (ลบระยะห่างที่เกินออก) */
+        /* เมนูในมือถือ: ล็อคไว้ตามเดิม (เห็นครบ 8 อัน) */
         @media (max-width: 1023px) {
             #mainMenu {
                 grid-template-columns: repeat(2, 1fr);
-                grid-template-rows: repeat(4, 75px); /* ล็อคความสูงแถวละ 75px เท่านั้น */
-                gap: 5px 0; /* ระยะห่างซ้ายขวา 5px แต่บนล่าง 0 */
+                grid-template-rows: repeat(4, 75px);
+                gap: 5px 0;
                 padding: 10px 10px;
-                align-content: start; /* ดันเมนูขึ้นไปชิดด้านบน */
+                align-content: start;
                 margin-bottom: 75px;
             }
-            .icon-box { width: 42px; height: 42px; border-radius: 10px; font-size: 1.1rem; margin-bottom: 2px; }
-            .menu-label { font-size: 0.75rem; line-height: 1.1; display: block; }
-            .menu-item { height: 75px; padding: 0; } /* บังคับความสูงเมนูให้เตี้ยลง */
+            .icon-box { width: 45px; height: 45px; border-radius: 12px; font-size: 1.2rem; margin-bottom: 2px; }
+            .menu-label { font-size: 0.75rem; line-height: 1.1; }
+            .menu-item { height: 75px; padding: 0; }
         }
 
-        /* สำหรับคอม: คงค่าเดิมที่สวยงาม */
+        /* เมนูในคอมพิวเตอร์: ปรับขนาดไอคอนให้พอดี ไม่ใหญ่เกินไป */
         @media (min-width: 1024px) {
             #mainMenu {
                 grid-template-columns: repeat(4, 1fr);
-                grid-template-rows: repeat(2, 1fr);
-                gap: 30px;
-                padding: 30px 80px;
-                margin-bottom: 80px;
-                max-width: 1200px;
+                grid-template-rows: repeat(2, 140px); /* บีบความสูงแต่ละแถวลง */
+                gap: 15px; 
+                padding: 20px 50px;
+                max-width: 900px; /* ลดความกว้างรวมของเมนูให้กระชับขึ้น */
                 align-content: center;
+                margin-bottom: 80px; 
             }
-            .icon-box { width: 85px; height: 85px; border-radius: 22px; font-size: 2rem; margin-bottom: 10px; }
-            .menu-label { font-size: 1.1rem; font-weight: 600; }
-            .menu-item { padding: 15px; }
+            .icon-box { width: 65px; height: 65px; border-radius: 18px; font-size: 1.6rem; margin-bottom: 8px; }
+            .menu-label { font-size: 1rem; font-weight: 600; color: #1e293b; }
+            .menu-item { height: 140px; padding: 10px; }
+            .menu-item:hover { transform: translateY(-3px); }
         }
 
         .menu-item {
@@ -98,6 +99,7 @@
             justify-content: center;
             text-decoration: none !important;
             cursor: pointer;
+            transition: all 0.2s;
         }
 
         .icon-box {
@@ -105,7 +107,7 @@
             align-items: center; 
             justify-content: center;
             color: white;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
 
         .c1 { background: linear-gradient(135deg, #FF5F6D, #FFC371); }
@@ -117,22 +119,22 @@
         .c7 { background: linear-gradient(135deg, #f2994a, #f2c94c); }
         .c8 { background: linear-gradient(135deg, #4b6cb7, #182848); }
 
-        .menu-label { font-weight: 600; color: #1e293b; text-align: center; }
+        .menu-label { text-align: center; line-height: 1.2; white-space: nowrap; }
 
-        #systemContent { display: none; width: 100%; height: calc(100vh - 75px); border: none; }
+        #systemContent { display: none; width: 100%; height: calc(100vh - 70px); border: none; }
 
         .bottom-nav {
             position: fixed; bottom: 0; left: 0; right: 0;
-            height: 75px; background: white;
+            height: 70px; background: white;
             display: flex; justify-content: space-around; align-items: center;
             border-top: 1px solid #e2e8f0; z-index: 2000;
         }
         .nav-btn {
             display: flex; flex-direction: column; align-items: center;
-            color: #94a3b8; border: none; background: none; flex: 1; font-size: 0.8rem;
+            color: #94a3b8; border: none; background: none; flex: 1; font-size: 0.75rem;
         }
         .nav-btn.active { color: var(--primary); font-weight: 600; }
-        .nav-btn i { font-size: 1.5rem; margin-bottom: 3px; }
+        .nav-btn i { font-size: 1.4rem; margin-bottom: 3px; }
     </style>
 </head>
 <body>
