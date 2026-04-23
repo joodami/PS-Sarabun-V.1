@@ -9,10 +9,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
-            --primary: #1a5276;
+            --primary: #1a5276; /* สีน้ำเงินเข้ม PS-Sarabun */
             --bg: #f8fafc;
-            /* ปรับเป็นสีเทาธรรมดา (Medium Grey) ไม่เข้มจัดค่ะ */
-            --main-gradient: linear-gradient(135deg, #bdc3c7, #8e9eab); 
+            /* ปรับโทนสีไอคอนให้เป็นสีเดียวกับชื่อระบบ (น้ำเงินเข้มไล่เฉด) */
+            --main-gradient: linear-gradient(135deg, #1a5276, #2980b9); 
         }
 
         body, html {
@@ -40,7 +40,7 @@
         @media (max-width: 1023px) {
             .app-header { padding: 8px 10px 0 10px; }
             .school-logo { height: 40px; margin-bottom: 2px; }
-            .app-title { font-size: 1.2rem; line-height: 1.1; }
+            .app-title { font-size: 1.2rem; line-height: 1.1; color: var(--primary); }
             .app-subtitle { font-size: 0.75rem; margin-top: 2px; margin-bottom: 5px; font-weight: 600; }
         }
 
@@ -60,7 +60,7 @@
             margin-right: auto;
         }
 
-        /* มือถือ: ล็อคค่าเดิมที่คุณครูโอเคแล้ว */
+        /* มือถือ: ล็อคค่าเดิมที่เห็นครบ 8 เมนู */
         @media (max-width: 1023px) {
             #mainMenu {
                 grid-template-columns: repeat(2, 1fr);
@@ -107,9 +107,9 @@
             align-items: center; 
             justify-content: center;
             color: white;
-            /* พื้นหลังสีเทาธรรมดา */
+            /* พื้นหลังสีน้ำเงินเข้มเดียวกับ PS-Sarabun */
             background: var(--main-gradient);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 10px rgba(26, 82, 118, 0.2);
         }
 
         .menu-label { text-align: center; line-height: 1.2; white-space: nowrap; }
