@@ -38,9 +38,20 @@
         @media (max-width: 1023px) {
             .app-header { padding: 8px 10px 0 10px; }
             .school-logo { height: 40px; margin-bottom: 2px; }
-            .app-title { font-size: 1.2rem; line-height: 1.1; color: var(--primary); font-weight: 700; }
-            .app-subtitle { font-size: 0.75rem; margin-top: 1px; margin-bottom: 5px; font-weight: 600; }
-        }
+            .app-title { 
+        font-size: 1.2rem; 
+        line-height: 1.0; /* ปรับลดความสูงบรรทัด */
+        color: var(--primary); 
+        font-weight: 700; /* ทำให้เป็นตัวหนา */
+        margin-bottom: 0px; /* เอาช่องว่างด้านล่างออก */
+    }
+    .app-subtitle { 
+        font-size: 0.75rem; 
+        margin-top: 0px; /* เอาช่องว่างด้านบนออกเพื่อให้ชิดชื่อระบบ */
+        margin-bottom: 5px; 
+        font-weight: 600; 
+    }
+}
 
         @media (min-width: 1024px) {
             .app-header { padding: 10px 20px 5px 20px; } 
@@ -71,7 +82,7 @@
             .menu-label { 
     font-size: 0.80rem; 
     line-height: 1.1; 
-    font-weight: 600; /* เปลี่ยนจาก 400 หรือ 500 เป็น 700 เพื่อให้หนาชัดเจน */
+    font-weight: 500; /* เปลี่ยนจาก 400 หรือ 500 เป็น 700 เพื่อให้หนาชัดเจน */
 }
             .menu-item { height: 75px; padding: 0; }
         }
