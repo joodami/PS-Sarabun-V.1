@@ -5,40 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>PS-Sarabun - โรงเรียนพิมานพิทยาสรรค์</title>
 
-    <!-- 1. ตั้งค่าสำหรับ PWA -->
+    <!-- 1. ตั้งค่าสำหรับให้เป็นแอปมือถือ (PWA) -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="PS-Sarabun">
     <meta name="theme-color" content="#1a5276">
 
-    <!-- 2. ลิงก์ไอคอนแอป -->
-    <link rel="apple-touch-icon" href="https://github.com/joodami/school-assets/blob/main/PS-SARABUN1.png?raw=true">
-    <link rel="icon" type="image/png" href="https://github.com/joodami/school-assets/blob/main/PS-SARABUN.png?raw=true">
+    <!-- 2. ลิงก์ไอคอนแอป (เมื่อได้ภาพใหม่ นำ URL มาเปลี่ยนตรงนี้นะคะ) -->
+<link rel="apple-touch-icon" href="https://github.com/joodami/school-assets/blob/main/PS-SARABUN1.png?raw=true">
+<link rel="icon" type="image/png" href="https://github.com/joodami/school-assets/blob/main/PS-SARABUN.png?raw=true">
 
     <!-- 3. CSS Libraries -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
         :root {
             --primary: #1a5276; 
-            --primary-gradient: linear-gradient(135deg, #1a5276 0%, #0f3652 100%);
-            --bg: #f1f5f9;
-            --card-bg: #ffffff;
-            --text-main: #0f172a;
-            --text-muted: #64748b;
-            --shadow-card: 0 2px 6px rgba(0, 0, 0, 0.05);
-            --shadow-icon: 0 3px 6px rgba(26, 82, 118, 0.3);
-            --nav-height: 56px;
+            --bg: #f8fafc;
+            --main-gradient: linear-gradient(135deg, #1a5276, #2980b9); 
         }
 
         body, html {
-            height: 100vh; 
-            height: 100dvh;
-            margin: 0; 
-            padding: 0;
+            height: 100%; margin: 0; padding: 0;
             font-family: 'Prompt', sans-serif;
             background-color: var(--bg);
             overflow: hidden; 
@@ -49,120 +40,74 @@
             display: flex;
             flex-direction: column;
             height: 100vh;
-            height: 100dvh;
-            box-sizing: border-box;
         }
 
-        /* Header Area */
         .app-header {
             background: #ffffff;
             text-align: center;
-            border-bottom: 3px solid var(--primary);
-            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+            border-bottom: 4px solid var(--primary);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
             flex-shrink: 0;
         }
 
-        /* Mobile Layout */
+        /* Mobile Style (หน้าจอเล็ก) - คงสไตล์เดิมของคุณครู */
         @media (max-width: 1023px) {
-            .app-header { padding: 4px 10px 2px 10px; }
-            .school-logo { height: 26px; margin-bottom: 1px; filter: drop-shadow(0 2px 3px rgba(0,0,0,0.1)); }
+            .app-header { padding: 8px 10px 0 10px; }
+            .school-logo { height: 40px; margin-bottom: 2px; }
             .app-title { 
-                font-size: 0.95rem; 
+                font-size: 1.2rem; 
                 line-height: 1.0; 
                 color: var(--primary); 
                 font-weight: 700; 
-                margin-bottom: 1px; 
+                margin-bottom: 0px; 
             }
             .app-subtitle { 
-                font-size: 0.60rem; 
-                margin-top: 0; 
-                margin-bottom: 2px; 
-                color: var(--text-muted);
-                font-weight: 500; 
+                font-size: 0.75rem; 
+                margin-top: 0px; 
+                margin-bottom: 5px; 
+                font-weight: 600; 
             }
-            
             #mainMenu {
                 grid-template-columns: repeat(2, 1fr);
-                grid-template-rows: repeat(5, 1fr);
-                gap: 5px 8px;
-                padding: 4px 10px calc(var(--nav-height) + 6px) 10px;
-                overflow: hidden;
-                flex-grow: 1;
-                box-sizing: border-box;
+                grid-template-rows: repeat(5, 75px);
+                gap: 5px 0;
+                padding: 10px 10px;
+                align-content: start;
+                margin-bottom: 75px;
+                overflow-y: auto;
             }
-
-            .menu-item {
-                background: var(--card-bg);
-                border-radius: 10px;
-                padding: 4px 2px;
-                box-shadow: var(--shadow-card);
-                border: 1px solid #e2e8f0;
-                flex-direction: column; /* ปรับให้เป็นแนวตั้ง: ไอคอนอยู่บน ชื่ออยู่ล่าง */
-                justify-content: center;
-                align-items: center;
-                height: 100%;
-                box-sizing: border-box;
-            }
-
-            .icon-box { 
-                width: 32px; 
-                height: 32px; 
-                border-radius: 8px; 
-                font-size: 0.95rem; 
-                margin-bottom: 3px; /* เว้นระยะห่างด้านล่างไอคอน */
-                margin-right: 0;
-                flex-shrink: 0;
-            }
-
+            .icon-box { width: 45px; height: 45px; border-radius: 12px; font-size: 1.2rem; margin-bottom: 3px; }
             .menu-label { 
-                font-size: 0.70rem; 
+                font-size: 0.80rem; 
                 line-height: 1.1; 
-                font-weight: 600; 
-                color: var(--text-main);
-                text-align: center;
-                white-space: normal;
+                font-weight: 500; 
             }
+            .menu-item { height: 75px; padding: 0; }
         }
 
-        /* Desktop Layout */
+        /* Desktop Style (หน้าจอใหญ่) - คงสไตล์เดิมของคุณครู */
         @media (min-width: 1024px) {
-            .app-header { padding: 15px 20px 10px 20px; } 
-            .school-logo { height: 58px; margin-bottom: 6px; }
+            .app-header { padding: 10px 20px 5px 20px; } 
+            .school-logo { height: 55px; margin-bottom: 5px; }
             .app-title { font-size: 1.8rem; font-weight: 700; color: var(--primary); margin: 0; }
-            .app-subtitle { font-size: 0.95rem; margin-top: 2px; margin-bottom: 5px; color: var(--text-muted); }
-            
+            .app-subtitle { font-size: 0.95rem; margin-top: 2px; margin-bottom: 5px; color: #475569; }
             #mainMenu {
                 grid-template-columns: repeat(5, 1fr);
-                gap: 18px; 
-                padding: 30px 50px calc(var(--nav-height) + 20px) 50px;
+                grid-template-rows: repeat(2, 140px);
+                gap: 15px; 
+                padding: 20px 50px;
                 max-width: 1100px;
                 align-content: center;
-                flex-grow: 1;
+                margin-bottom: 80px; 
             }
-
-            .menu-item {
-                background: var(--card-bg);
-                border-radius: 20px;
-                padding: 16px;
-                box-shadow: var(--shadow-card);
-                border: 1px solid #e2e8f0;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-            }
-
-            .icon-box { 
-                width: 60px; 
-                height: 60px; 
-                border-radius: 18px; 
-                font-size: 1.5rem; 
-                margin-bottom: 10px; 
-            }
-
-            .menu-label { font-size: 0.95rem; font-weight: 600; color: var(--text-main); text-align: center; }
+            .icon-box { width: 65px; height: 65px; border-radius: 18px; font-size: 1.6rem; margin-bottom: 8px; }
+            .menu-label { font-size: 1rem; font-weight: 600; color: #1e293b; }
+            .menu-item { height: 140px; padding: 10px; }
+            .menu-item:hover { transform: translateY(-3px); }
         }
 
         #mainMenu {
+            flex-grow: 1;
             display: grid;
             width: 100%;
             margin-left: auto;
@@ -171,58 +116,38 @@
 
         .menu-item {
             display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             text-decoration: none !important;
             cursor: pointer;
-            transition: all 0.15s ease-in-out;
+            transition: all 0.2s;
         }
 
-        .menu-item:active {
-            transform: scale(0.97);
-            background-color: #f1f5f9;
-        }
-
-        /* ไอคอนสีเข้มโดดเด่น */
         .icon-box {
             display: flex; 
             align-items: center; 
             justify-content: center;
-            color: #ffffff !important;
-            background: var(--primary-gradient);
-            box-shadow: var(--shadow-icon);
+            color: white;
+            background: var(--main-gradient);
+            box-shadow: 0 4px 10px rgba(26, 82, 118, 0.2);
         }
 
-        #systemContent { 
-            display: none; 
-            width: 100%; 
-            height: calc(100vh - var(--nav-height)); 
-            height: calc(100dvh - var(--nav-height)); 
-            border: none; 
-        }
+        .menu-label { text-align: center; line-height: 1.2; white-space: nowrap; }
+        #systemContent { display: none; width: 100%; height: calc(100vh - 70px); border: none; }
 
-        /* Bottom Navigation Bar */
         .bottom-nav {
-            position: fixed; 
-            bottom: 0; 
-            left: 0; 
-            right: 0;
-            height: var(--nav-height); 
-            background: #ffffff;
-            display: flex; 
-            justify-content: space-around; 
-            align-items: center;
-            border-top: 1px solid #cbd5e1; 
-            z-index: 2000;
-            box-shadow: 0 -3px 10px rgba(0,0,0,0.05);
+            position: fixed; bottom: 0; left: 0; right: 0;
+            height: 70px; background: white;
+            display: flex; justify-content: space-around; align-items: center;
+            border-top: 1px solid #e2e8f0; z-index: 2000;
         }
-        
         .nav-btn {
             display: flex; flex-direction: column; align-items: center;
-            color: #64748b; border: none; background: none; flex: 1; font-size: 0.70rem;
-            font-weight: 600;
+            color: #94a3b8; border: none; background: none; flex: 1; font-size: 0.75rem;
         }
-        
-        .nav-btn.active { color: var(--primary); font-weight: 700; }
-        .nav-btn i { font-size: 1.2rem; margin-bottom: 1px; }
+        .nav-btn.active { color: var(--primary); font-weight: 600; }
+        .nav-btn i { font-size: 1.4rem; margin-bottom: 3px; }
     </style>
 </head>
 <body>
@@ -267,6 +192,7 @@
             <div class="icon-box"><i class="fas fa-search"></i></div>
             <span class="menu-label">สืบค้นคำสั่งโรงเรียน</span>
         </div>
+        
         <div class="menu-item" onclick="openSystem('https://joodami.github.io/download-item/')">
             <div class="icon-box"><i class="fas fa-file-download"></i></div>
             <span class="menu-label">ดาวน์โหลดแบบฟอร์ม</span>
@@ -279,20 +205,20 @@
 
     <iframe id="systemContent" src=""></iframe>
 
-    <nav class="bottom-nav">
-        <button onclick="goHome()" class="nav-btn active">
-            <i class="fas fa-home"></i>
-            <span>หน้าแรก</span>
-        </button>
-        <button onclick="window.location.reload()" class="nav-btn">
-            <i class="fas fa-sync-alt"></i>
-            <span>รีเฟรช</span>
-        </button>
-        <button onclick="window.open('https://lin.ee/U7sLDp0', '_blank')" class="nav-btn">
-            <i class="fab fa-line" style="color: #06C755;"></i>
-            <span>ติดต่อ Line</span>
-        </button>
-    </nav>
+<nav class="bottom-nav">
+    <button onclick="goHome()" class="nav-btn active">
+        <i class="fas fa-home"></i>
+        <span>หน้าแรก</span>
+    </button>
+    <button onclick="window.location.reload()" class="nav-btn">
+        <i class="fas fa-sync-alt"></i>
+        <span>รีเฟรช</span>
+    </button>
+    <button onclick="window.open('https://lin.ee/U7sLDp0', '_blank')" class="nav-btn">
+        <i class="fab fa-line" style="color: var(--primary); font-size: 1.6rem;"></i>
+        <span style="color: #64748b; font-weight: 500;">ติดต่อ Line</span>
+    </button>
+</nav>
 </div>
 
 <script>
