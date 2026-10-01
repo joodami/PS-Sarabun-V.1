@@ -31,12 +31,12 @@
             --text-muted: #64748b;
             --shadow-card: 0 2px 6px rgba(0, 0, 0, 0.05);
             --shadow-icon: 0 3px 6px rgba(26, 82, 118, 0.3);
-            --nav-height: 58px;
+            --nav-height: 56px;
         }
 
         body, html {
             height: 100vh; 
-            height: 100dvh; /* ใช้ Dynamic Viewport เพื่อให้พอดีจอมือถือจริง */
+            height: 100dvh;
             margin: 0; 
             padding: 0;
             font-family: 'Prompt', sans-serif;
@@ -64,17 +64,17 @@
 
         /* Mobile Layout */
         @media (max-width: 1023px) {
-            .app-header { padding: 6px 10px 4px 10px; }
-            .school-logo { height: 28px; margin-bottom: 1px; filter: drop-shadow(0 2px 3px rgba(0,0,0,0.1)); }
+            .app-header { padding: 4px 10px 2px 10px; }
+            .school-logo { height: 26px; margin-bottom: 1px; filter: drop-shadow(0 2px 3px rgba(0,0,0,0.1)); }
             .app-title { 
-                font-size: 1.0rem; 
+                font-size: 0.95rem; 
                 line-height: 1.0; 
                 color: var(--primary); 
                 font-weight: 700; 
                 margin-bottom: 1px; 
             }
             .app-subtitle { 
-                font-size: 0.62rem; 
+                font-size: 0.60rem; 
                 margin-top: 0; 
                 margin-bottom: 2px; 
                 color: var(--text-muted);
@@ -83,9 +83,9 @@
             
             #mainMenu {
                 grid-template-columns: repeat(2, 1fr);
-                grid-template-rows: repeat(5, 1fr); /* แบ่ง 5 แถวเท่ากันพอดี */
+                grid-template-rows: repeat(5, 1fr);
                 gap: 5px 8px;
-                padding: 6px 10px calc(var(--nav-height) + 8px) 10px; /* คำนวณเว้นระยะเผื่อแถบบาร์ล่างพอดี */
+                padding: 4px 10px calc(var(--nav-height) + 6px) 10px;
                 overflow: hidden;
                 flex-grow: 1;
                 box-sizing: border-box;
@@ -94,11 +94,11 @@
             .menu-item {
                 background: var(--card-bg);
                 border-radius: 10px;
-                padding: 2px 6px;
+                padding: 4px 2px;
                 box-shadow: var(--shadow-card);
                 border: 1px solid #e2e8f0;
-                flex-direction: row; 
-                justify-content: flex-start;
+                flex-direction: column; /* ปรับให้เป็นแนวตั้ง: ไอคอนอยู่บน ชื่ออยู่ล่าง */
+                justify-content: center;
                 align-items: center;
                 height: 100%;
                 box-sizing: border-box;
@@ -109,17 +109,17 @@
                 height: 32px; 
                 border-radius: 8px; 
                 font-size: 0.95rem; 
-                margin-bottom: 0; 
-                margin-right: 6px;
+                margin-bottom: 3px; /* เว้นระยะห่างด้านล่างไอคอน */
+                margin-right: 0;
                 flex-shrink: 0;
             }
 
             .menu-label { 
-                font-size: 0.72rem; 
-                line-height: 1.15; 
+                font-size: 0.70rem; 
+                line-height: 1.1; 
                 font-weight: 600; 
                 color: var(--text-main);
-                text-align: left;
+                text-align: center;
                 white-space: normal;
             }
         }
