@@ -29,13 +29,14 @@
             --card-bg: #ffffff;
             --text-main: #0f172a;
             --text-muted: #64748b;
-            --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.06);
-            --shadow-icon: 0 3px 8px rgba(26, 82, 118, 0.35);
+            --shadow-card: 0 2px 6px rgba(0, 0, 0, 0.05);
+            --shadow-icon: 0 3px 6px rgba(26, 82, 118, 0.3);
+            --nav-height: 58px;
         }
 
-        /* ล็อกหน้าจอ ไม่ให้มี Scrollbar ทั้งหน้า */
         body, html {
-            height: 100%; 
+            height: 100vh; 
+            height: 100dvh; /* ใช้ Dynamic Viewport เพื่อให้พอดีจอมือถือจริง */
             margin: 0; 
             padding: 0;
             font-family: 'Prompt', sans-serif;
@@ -48,7 +49,8 @@
             display: flex;
             flex-direction: column;
             height: 100vh;
-            justify-content: space-between;
+            height: 100dvh;
+            box-sizing: border-box;
         }
 
         /* Header Area */
@@ -56,23 +58,23 @@
             background: #ffffff;
             text-align: center;
             border-bottom: 3px solid var(--primary);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
             flex-shrink: 0;
         }
 
-        /* Mobile Layout Style (แสดงผลพอดีหน้าจอ 100% ไม่ต้องเลื่อน) */
+        /* Mobile Layout */
         @media (max-width: 1023px) {
             .app-header { padding: 6px 10px 4px 10px; }
-            .school-logo { height: 32px; margin-bottom: 2px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)); }
+            .school-logo { height: 28px; margin-bottom: 1px; filter: drop-shadow(0 2px 3px rgba(0,0,0,0.1)); }
             .app-title { 
-                font-size: 1.05rem; 
+                font-size: 1.0rem; 
                 line-height: 1.0; 
                 color: var(--primary); 
                 font-weight: 700; 
                 margin-bottom: 1px; 
             }
             .app-subtitle { 
-                font-size: 0.65rem; 
+                font-size: 0.62rem; 
                 margin-top: 0; 
                 margin-bottom: 2px; 
                 color: var(--text-muted);
@@ -82,44 +84,47 @@
             #mainMenu {
                 grid-template-columns: repeat(2, 1fr);
                 grid-template-rows: repeat(5, 1fr); /* แบ่ง 5 แถวเท่ากันพอดี */
-                gap: 6px 8px;
-                padding: 8px 10px 68px 10px; /* เผื่อพื้นที่ด้านล่างพอดีแถบกด */
-                overflow: hidden; /* ห้ามเลื่อน */
-                height: 100%;
+                gap: 5px 8px;
+                padding: 6px 10px calc(var(--nav-height) + 8px) 10px; /* คำนวณเว้นระยะเผื่อแถบบาร์ล่างพอดี */
+                overflow: hidden;
+                flex-grow: 1;
+                box-sizing: border-box;
             }
 
             .menu-item {
                 background: var(--card-bg);
-                border-radius: 12px;
-                padding: 4px;
+                border-radius: 10px;
+                padding: 2px 6px;
                 box-shadow: var(--shadow-card);
                 border: 1px solid #e2e8f0;
-                flex-direction: row; /* จัดไอคอนกับข้อความให้อยู่แนวนอนเพื่อให้ประหยัดพื้นที่แนวตั้ง */
+                flex-direction: row; 
                 justify-content: flex-start;
-                padding-left: 10px;
+                align-items: center;
+                height: 100%;
+                box-sizing: border-box;
             }
 
             .icon-box { 
-                width: 36px; 
-                height: 36px; 
-                border-radius: 10px; 
-                font-size: 1rem; 
+                width: 32px; 
+                height: 32px; 
+                border-radius: 8px; 
+                font-size: 0.95rem; 
                 margin-bottom: 0; 
-                margin-right: 8px;
+                margin-right: 6px;
                 flex-shrink: 0;
             }
 
             .menu-label { 
-                font-size: 0.75rem; 
+                font-size: 0.72rem; 
                 line-height: 1.15; 
                 font-weight: 600; 
                 color: var(--text-main);
                 text-align: left;
-                white-space: normal; /* ยอมให้ขึ้นบรรทัดใหม่ได้ถ้าข้อความยาว */
+                white-space: normal;
             }
         }
 
-        /* Desktop Layout Style */
+        /* Desktop Layout */
         @media (min-width: 1024px) {
             .app-header { padding: 15px 20px 10px 20px; } 
             .school-logo { height: 58px; margin-bottom: 6px; }
@@ -129,9 +134,10 @@
             #mainMenu {
                 grid-template-columns: repeat(5, 1fr);
                 gap: 18px; 
-                padding: 30px 50px 80px 50px;
+                padding: 30px 50px calc(var(--nav-height) + 20px) 50px;
                 max-width: 1100px;
                 align-content: center;
+                flex-grow: 1;
             }
 
             .menu-item {
@@ -142,6 +148,7 @@
                 border: 1px solid #e2e8f0;
                 flex-direction: column;
                 justify-content: center;
+                align-items: center;
             }
 
             .icon-box { 
@@ -156,7 +163,6 @@
         }
 
         #mainMenu {
-            flex-grow: 1;
             display: grid;
             width: 100%;
             margin-left: auto;
@@ -165,7 +171,6 @@
 
         .menu-item {
             display: flex;
-            align-items: center;
             text-decoration: none !important;
             cursor: pointer;
             transition: all 0.15s ease-in-out;
@@ -189,17 +194,24 @@
         #systemContent { 
             display: none; 
             width: 100%; 
-            height: calc(100vh - 58px); 
+            height: calc(100vh - var(--nav-height)); 
+            height: calc(100dvh - var(--nav-height)); 
             border: none; 
         }
 
         /* Bottom Navigation Bar */
         .bottom-nav {
-            position: fixed; bottom: 0; left: 0; right: 0;
-            height: 58px; 
+            position: fixed; 
+            bottom: 0; 
+            left: 0; 
+            right: 0;
+            height: var(--nav-height); 
             background: #ffffff;
-            display: flex; justify-content: space-around; align-items: center;
-            border-top: 1px solid #cbd5e1; z-index: 2000;
+            display: flex; 
+            justify-content: space-around; 
+            align-items: center;
+            border-top: 1px solid #cbd5e1; 
+            z-index: 2000;
             box-shadow: 0 -3px 10px rgba(0,0,0,0.05);
         }
         
@@ -210,7 +222,7 @@
         }
         
         .nav-btn.active { color: var(--primary); font-weight: 700; }
-        .nav-btn i { font-size: 1.25rem; margin-bottom: 1px; }
+        .nav-btn i { font-size: 1.2rem; margin-bottom: 1px; }
     </style>
 </head>
 <body>
