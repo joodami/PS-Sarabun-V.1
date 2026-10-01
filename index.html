@@ -5,27 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>PS-Sarabun - โรงเรียนพิมานพิทยาสรรค์</title>
 
-    <!-- 1. ตั้งค่าสำหรับให้เป็นแอปมือถือ (PWA) -->
+    <!-- 1. ตั้งค่าสำหรับ PWA -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="PS-Sarabun">
     <meta name="theme-color" content="#1a5276">
 
-    <!-- 2. ลิงก์ไอคอนแอป (เมื่อได้ภาพใหม่ นำ URL มาเปลี่ยนตรงนี้นะคะ) -->
-<link rel="apple-touch-icon" href="https://github.com/joodami/school-assets/blob/main/PS-SARABUN1.png?raw=true">
-<link rel="icon" type="image/png" href="https://github.com/joodami/school-assets/blob/main/PS-SARABUN.png?raw=true">
+    <!-- 2. ลิงก์ไอคอนแอป -->
+    <link rel="apple-touch-icon" href="https://github.com/joodami/school-assets/blob/main/PS-SARABUN1.png?raw=true">
+    <link rel="icon" type="image/png" href="https://github.com/joodami/school-assets/blob/main/PS-SARABUN.png?raw=true">
 
     <!-- 3. CSS Libraries -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
         :root {
             --primary: #1a5276; 
-            --bg: #f8fafc;
-            --main-gradient: linear-gradient(135deg, #1a5276, #2980b9); 
+            --primary-light: #eaf2f8;
+            --primary-gradient: linear-gradient(135deg, #1a5276 0%, #2980b9 100%);
+            --bg: #f4f7f9;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --shadow-sm: 0 4px 12px rgba(26, 82, 118, 0.06);
+            --shadow-md: 0 8px 20px rgba(26, 82, 118, 0.12);
         }
 
         body, html {
@@ -42,68 +48,93 @@
             height: 100vh;
         }
 
+        /* Header UI Modernization */
         .app-header {
             background: #ffffff;
             text-align: center;
-            border-bottom: 4px solid var(--primary);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            border-bottom: 3px solid rgba(26, 82, 118, 0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
             flex-shrink: 0;
         }
 
-        /* Mobile Style (หน้าจอเล็ก) - คงสไตล์เดิมของคุณครู */
+        /* Responsive Settings */
         @media (max-width: 1023px) {
-            .app-header { padding: 8px 10px 0 10px; }
-            .school-logo { height: 40px; margin-bottom: 2px; }
+            .app-header { padding: 12px 15px 8px 15px; }
+            .school-logo { height: 42px; margin-bottom: 4px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)); }
             .app-title { 
-                font-size: 1.2rem; 
-                line-height: 1.0; 
+                font-size: 1.25rem; 
+                line-height: 1.1; 
                 color: var(--primary); 
                 font-weight: 700; 
-                margin-bottom: 0px; 
+                margin-bottom: 2px; 
             }
             .app-subtitle { 
                 font-size: 0.75rem; 
-                margin-top: 0px; 
-                margin-bottom: 5px; 
-                font-weight: 600; 
+                margin-top: 0; 
+                margin-bottom: 4px; 
+                color: var(--text-muted);
+                font-weight: 500; 
             }
             #mainMenu {
                 grid-template-columns: repeat(2, 1fr);
-                grid-template-rows: repeat(5, 75px);
-                gap: 5px 0;
-                padding: 10px 10px;
+                grid-auto-rows: minmax(85px, auto);
+                gap: 10px;
+                padding: 12px;
                 align-content: start;
-                margin-bottom: 75px;
+                margin-bottom: 80px;
                 overflow-y: auto;
             }
-            .icon-box { width: 45px; height: 45px; border-radius: 12px; font-size: 1.2rem; margin-bottom: 3px; }
-            .menu-label { 
-                font-size: 0.80rem; 
-                line-height: 1.1; 
-                font-weight: 500; 
+            .menu-item {
+                background: var(--card-bg);
+                border-radius: 16px;
+                padding: 10px;
+                box-shadow: var(--shadow-sm);
+                border: 1px solid rgba(255, 255, 255, 0.8);
             }
-            .menu-item { height: 75px; padding: 0; }
+            .icon-box { 
+                width: 44px; 
+                height: 44px; 
+                border-radius: 12px; 
+                font-size: 1.2rem; 
+                margin-bottom: 6px; 
+            }
+            .menu-label { 
+                font-size: 0.82rem; 
+                line-height: 1.2; 
+                font-weight: 600; 
+                color: var(--text-main);
+            }
         }
 
-        /* Desktop Style (หน้าจอใหญ่) - คงสไตล์เดิมของคุณครู */
         @media (min-width: 1024px) {
-            .app-header { padding: 10px 20px 5px 20px; } 
-            .school-logo { height: 55px; margin-bottom: 5px; }
+            .app-header { padding: 15px 20px 10px 20px; } 
+            .school-logo { height: 58px; margin-bottom: 6px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)); }
             .app-title { font-size: 1.8rem; font-weight: 700; color: var(--primary); margin: 0; }
-            .app-subtitle { font-size: 0.95rem; margin-top: 2px; margin-bottom: 5px; color: #475569; }
+            .app-subtitle { font-size: 0.95rem; margin-top: 2px; margin-bottom: 5px; color: var(--text-muted); }
             #mainMenu {
                 grid-template-columns: repeat(5, 1fr);
-                grid-template-rows: repeat(2, 140px);
-                gap: 15px; 
-                padding: 20px 50px;
+                grid-template-rows: repeat(2, 145px);
+                gap: 18px; 
+                padding: 30px 50px;
                 max-width: 1100px;
                 align-content: center;
                 margin-bottom: 80px; 
             }
-            .icon-box { width: 65px; height: 65px; border-radius: 18px; font-size: 1.6rem; margin-bottom: 8px; }
-            .menu-label { font-size: 1rem; font-weight: 600; color: #1e293b; }
-            .menu-item { height: 140px; padding: 10px; }
-            .menu-item:hover { transform: translateY(-3px); }
+            .menu-item {
+                background: var(--card-bg);
+                border-radius: 20px;
+                padding: 15px;
+                box-shadow: var(--shadow-sm);
+                border: 1px solid #eef2f6;
+            }
+            .icon-box { 
+                width: 60px; 
+                height: 60px; 
+                border-radius: 16px; 
+                font-size: 1.5rem; 
+                margin-bottom: 10px; 
+            }
+            .menu-label { font-size: 0.95rem; font-weight: 600; color: var(--text-main); }
         }
 
         #mainMenu {
@@ -121,33 +152,57 @@
             justify-content: center;
             text-decoration: none !important;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
+        .menu-item:hover { 
+            transform: translateY(-4px); 
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-light);
+        }
+        
+        .menu-item:active {
+            transform: scale(0.97);
+        }
+
+        /* Modern Icon Box (Duotone Style) */
         .icon-box {
             display: flex; 
             align-items: center; 
             justify-content: center;
-            color: white;
-            background: var(--main-gradient);
-            box-shadow: 0 4px 10px rgba(26, 82, 118, 0.2);
+            color: var(--primary);
+            background: var(--primary-light);
+            transition: all 0.25s ease;
         }
 
-        .menu-label { text-align: center; line-height: 1.2; white-space: nowrap; }
+        .menu-item:hover .icon-box {
+            background: var(--primary-gradient);
+            color: #ffffff;
+        }
+
+        .menu-label { text-align: center; white-space: nowrap; }
         #systemContent { display: none; width: 100%; height: calc(100vh - 70px); border: none; }
 
+        /* Modern Bottom Navigation Bar */
         .bottom-nav {
             position: fixed; bottom: 0; left: 0; right: 0;
-            height: 70px; background: white;
+            height: 65px; 
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             display: flex; justify-content: space-around; align-items: center;
             border-top: 1px solid #e2e8f0; z-index: 2000;
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.03);
         }
+        
         .nav-btn {
             display: flex; flex-direction: column; align-items: center;
-            color: #94a3b8; border: none; background: none; flex: 1; font-size: 0.75rem;
+            color: var(--text-muted); border: none; background: none; flex: 1; font-size: 0.72rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
         }
-        .nav-btn.active { color: var(--primary); font-weight: 600; }
-        .nav-btn i { font-size: 1.4rem; margin-bottom: 3px; }
+        
+        .nav-btn.active { color: var(--primary); font-weight: 700; }
+        .nav-btn i { font-size: 1.3rem; margin-bottom: 2px; }
     </style>
 </head>
 <body>
@@ -205,20 +260,20 @@
 
     <iframe id="systemContent" src=""></iframe>
 
-<nav class="bottom-nav">
-    <button onclick="goHome()" class="nav-btn active">
-        <i class="fas fa-home"></i>
-        <span>หน้าแรก</span>
-    </button>
-    <button onclick="window.location.reload()" class="nav-btn">
-        <i class="fas fa-sync-alt"></i>
-        <span>รีเฟรช</span>
-    </button>
-    <button onclick="window.open('https://lin.ee/U7sLDp0', '_blank')" class="nav-btn">
-        <i class="fab fa-line" style="color: var(--primary); font-size: 1.6rem;"></i>
-        <span style="color: #64748b; font-weight: 500;">ติดต่อ Line</span>
-    </button>
-</nav>
+    <nav class="bottom-nav">
+        <button onclick="goHome()" class="nav-btn active">
+            <i class="fas fa-home"></i>
+            <span>หน้าแรก</span>
+        </button>
+        <button onclick="window.location.reload()" class="nav-btn">
+            <i class="fas fa-sync-alt"></i>
+            <span>รีเฟรช</span>
+        </button>
+        <button onclick="window.open('https://lin.ee/U7sLDp0', '_blank')" class="nav-btn">
+            <i class="fab fa-line" style="color: #06C755;"></i>
+            <span>ติดต่อ Line</span>
+        </button>
+    </nav>
 </div>
 
 <script>
